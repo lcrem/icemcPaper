@@ -1,0 +1,115 @@
+\section{Propagation in ice and air}
+\label{sec:propagation}
+
+% The following equation is used for the index of fraction $n_{firn}$ as a function of altitude $h_{int}$ (a negative number in the firn here in meters), 
+%\begin{equation}
+%%n(h_{int})=1.325+0.463251\times e^{-0.140157\times h_{int}}
+%n_{firn}(h_{int})=a+b\cdot e^{c\cdot h_{int}} \;,
+%\end{equation}
+%\noindent where
+%$a=1.33$,
+%$b=0.46$, and
+%$c=-0.14$\,m$^{-1}$.
+%This equation is a fit to the data measured by the 
+ % See figure~\ref{fig:nrice}.
+%\begin{figure}
+%\begin{center}
+%\epsfig{figure=nrice.eps,height=4.5in}
+%\caption{Fit to RICE data for index of refraction as a function of depth below the surface.  Plot is from Peter Gorham.
+%\label{fig:nrice}}
+%\end{center}
+%\end{figure}
+
+%The specular paths through the ice and air are found through an iterative method.
+%The initial seed for the surface RF exit point is the point on the ice surface directly above the interaction point.
+%%From simple geometry we can calculate the surface normal, and smear it according to a Gaussian distribution of width 0.012 [WHERE DOES THIS COME FROM????] to account for surface ``slopeyness'' (this gives 0.01 rad as the mean magnitude of the slope).
+%The second guess refines this by including Snell's law and the payload position.
+%The in-air propagation vector, taken as the vector from the payload to the initial exit point seed, is refracted through the ice surface to determine its impact parameter with the interaction point (at constant depth).
+%The exit point seed is shifted by this amount on the surface, and the refinement procedure is repeated.
+%This allows for the calculation of the in-ice $\vec{n}_{ice}$ and -air $\vec{n}_{air}$ propagation vectors as well as the specular RF exit point $\vec{x}_{RF}$ on the ice surface.
+%For reflected rays, we use the mirror interaction point instead. 
+%A rejection cut is performed on the event based on the amount of expected attenuation,
+%\begin{equation}
+%F_{attn}(d_{ice}) = \mathrm{exp}(-d_{ice}\ /\ \ell_{attn}),
+%\end{equation}
+%due to the path length $d_{ice}$ and attenuation length $\ell_{attn}$ in ice.
+
+%The specular Fresnel coefficients $t_{||}$ and $t_{\perp}$ for the parallel and perpendicular components of the normalized transmitted electric field vector are calculated at the ice-air interface with respect to the local surface normal.
+%The surface normal includes the slopey-ness parameter as a local perturbation.
+
+The electric field is propagated to the payload using a standard ray tracing algorithm.
+The electric field magnitude at the payload position (before applying
+the ANITA instrument response) is calculated as follows:
+\begin{equation}
+ \mathcal{E}_{\perp,||} = \mathcal{E}^{(\mathrm{@ 1m})}  
+ \mathrm{e}^{(-d_{ice}\ /\ \ell_{attn})}
+ \frac{t_{\perp,||}}{d_{ice} + d_{air}}
+ \ F_{taper}(\theta_{view}-\theta_{ch}) \,.
+\end{equation}
+The first factor accounts for propagation in ice, with $d_{ice}$ being the path length and $\ell_{attn}$ the attenuation length in ice. 
+The second factor accounts for the refraction from ice to air, using
+the specular Fresnel coefficients, $t_{||}$ and $t_{\perp}$, for the parallel and perpendicular components of the normalized transmitted electric field vector at the ice-air interface with respect to the local surface normal.
+Finally, $F_{taper}(\theta_{view}-\theta_{ch})$ is a geometrical attenuation factor of the field strength resulting from viewing the Cherenkov emission ``off-cone'' at an angle $\theta_{view}$ different from the Cherenkov angle $\theta_{ch}$.
+The functional form of $F_{taper}$ is taken to be Gaussian and is set to zero for ($\theta_{view}-\theta_{ch}$) > 20 $\Delta \theta$, where $\Delta \theta$ is the width of the Cherenkov cove. 
+%\CD{Say something about what happens for the reflected solution?}
+%\BS{You don't explicitly explain the spherical power intensity loss $\frac{1}{d_{ice}+d_{air}}$ factor below the Fresnel components?}
+
+%The user may set the attenuation length for radio in ice to be  a constant value (conservatively 700\,m), 
+
+The in-ice polarization vector is calculated using the neutrino
+velocity vector and in-ice propagation vector, which lies radially
+outward from the Cherenkov cone, as Cherenkov radiation is radially polarized.
+Attenuation lengths for radio in Antarctica are based on measurements performed at the Ross Ice Shelf and the South Pole~\cite{smex}.
+The index of refraction is taken as 1.79 for deep ice and 1.325 at the surface. A model for the firn (layers of packed snow) based on data taken by the RICE Collaboration~\cite{PhysRevD.73.082002}, is used at depths shallower than 150\,m.
+
+Future versions of \icemc will include effects of ice surface
+roughness.
+
+%\subsection{Fresnel Factor}
+
+%When the rays from the Cherenkov cone reach the ice-air boundary they just obey boundary conditions and thus the magnitude of the electric field is altered and the signal traverses the boundary~\cite{dawn}.
+%For the pokey case, the polarization vector is perpendicular to the plane of incidence, and for the slappy case the polarization vector is in the plane of incidence.  The general case is composed of both components.
+
+%After dividing up the electric field emerging from the ice 
+%into its ``pokey'' and
+%``slappy'' components, $E^{ice}_{\parallel}$ and 
+%$E^{ice}_{\perp}$, the
+%electric field that emerges from the ice $E_{air}$ is
+%\begin{equation}
+%E_{air}=\sqrt{\left( E^{ice}_{\parallel}\cdot r_{\parallel} \right)^2 + \left( E^{ice}_{\perp} \cdot r_{\perp} \right)^2 }
+%\end{equation}
+
+
+
+%\subsection{Ice Surface Roughness}
+%\label{subsec:roughness}
+%Surface roughness acts to allow different portions of the ice surface to contribute transmitted power to the payload for a single event, due to new allowable scattering geometries at the air-ice interface.
+%These geometries depend on the characteristics of the roughness at the interface.
+
+%These contributions are estimated by gridding the surface in the vicinity of the specular RF exit point.
+%Each point $i$ on the grid has individual local values for $\vec{x}_{RF}^{i}$, $\vec{n}_{air}^{i}$, and $\vec{n}_{ice}^{i}$.
+%Using only the local surface normal $\hat{n}^{i}$, the local incidence $\theta_{inc}^{i}$ and transmission $\theta_{trans}^{i}$ angles are calculated; in other words, the ray tracing procedure for the specular case is not used in the geometry determination of grid point $i$, except to determine the placement of the grid using the RF exit point seed.
+
+%A toy facet model was developed to determine the all-sky transmitted power distribution for specified roughness parameters.
+%The simulation was validated with measurements of laser light refracting through ground glass diffuser plates~\cite{Griswold:07}; see Section~\ref{subsec:validation_lab} for additional information.
+%Different Antarctic locations are characterized by different roughness parameters, for which this implementation is able to account.
+%It is important to note that ($\theta_{inc}^{i}$, $\theta_{trans}^{i}$) pairs satisfy $local$ EM boundary conditions since the toy facet model generates a distribution of tilted surface facets allowing transmission.
+
+%The simulation generates a distribution of tilted facet elements with slopes randomly sampled according to a Rayleigh distribution characterized by a rms slope value $s_{rms}$.
+%For each element, the basic calculation involves projecting the incident ray along the facet element normal to determine the local incidence angle for use with Snell's law, as well as basis vectors oriented in the element plane.
+%The local transmission vector is constructed from the element normal and basis vectors, then projected along the global surface normal to determine the direction relative to the global surface.
+%This procedure is performed, for both parallel and perpendicular transmission, many times to provide the average transmitted intensity as a function of position on the sky.
+
+%For a specified roughness parameterization, simulations of the facet model are used to generate look-up tables in ($\theta_{inc}^{i}$, $\theta_{trans}^{i}$), which are used by \icemc to estimate the contributed power for a given grid point $i$ and its associated geometry.
+%Resources at the Ohio Supercomputer Center~\cite{OhioSupercomputerCenter1987} were used to perform the validations and generate high statistics look-up tables.
+%The calculation for the transmitted electric field vector at the payload is otherwise the same as described above for the specular case, except that the specular Fresnel coefficients are replaced by ($Power^{1/2}$) for the respective field vector component.
+%Since the total simulated time-domain waveform at the payload will be the sum of the individual waveforms, the relative time delay due to the varying path length\footnote{measured relative to the specular travel time} for each grid point is also recorded.
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "icemc.tex"
+%%% End:

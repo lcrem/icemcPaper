@@ -1,0 +1,98 @@
+\section{Radio signal simulation} 
+\label{sec:rf}
+
+\subsection{Askaryan parametrization}
+For each event the neutrino energy is picked randomly following the input energy spectrum.
+Rather than simulating the particle shower development in the ice that
+would produce the Askaryan radiation, a 1D parametrization is used 
+to get the peak of the Askaryan signal at 1\,m from the point of interaction, $\mathcal{E}^{(\mathrm{@ 1m})}$, 
+according to Reference~\cite{JaimeAskarian2000} and following:
+\begin{equation}
+\label{eq:vmmhz}
+\mathcal{E}^{(\mathrm{@ 1m})} =2.53\times 10^{-7}\cdot \frac{\sin{\theta_v}}{\sin{\theta_c}}\cdot  \frac{E}{\mathrm{TeV}} \cdot \frac{\nu}{\nu_0} \cdot \frac{1}{1.+\left( \frac{\nu}{\nu_0} \right)^{1.44}} \;,
+\end{equation}
+\noindent where $\nu$ is the frequency, $\nu_0=1.15$\,GHz, $E$ is
+the shower energy (see Subsection~\ref{subsec:emhadshower}),
+%\CD{Is the hadronic shower treated differently from the em?}
+$\theta_v$ is the viewing angle and $\theta_c$ is the Cherenkov angle
+(see Subsection~\ref{subsec:cherenkov_width}). 
+This parametrization is valid up to 5\,GHz, covering the ANITA
+band of 0.2-1.2\,GHz.
+
+\subsection{Neutrino flavors and interaction types}
+\label{subsec:emhadshower}
+The \icemc program assumes flavour democracy: 
+the flavors are fully mixed by the time the neutrinos get to the ice.
+Information about each flavor is stored separately so the sensitivity to each flavour may be quoted separately.
+
+The neutrino event undergoes a charged/neutral current interaction in
+$68.65\%$/31.35\% of cases.
+%of the events at random are chosen to be charged current and the remainder to be neutral current.
+For charged current electron neutrino interactions the electromagnetic
+component is calculated as $1-y$, where $y$ is the inelasticity and is
+approximated by a double-exponential function~\cite{gandhi}. 
+In all other cases the electromagnetic component is considered negligible and the hadronic component is equal to the inelasticity.
+Secondary particles are not propagated.
+
+%A future version of the code will include $\mu/\tau$ bremsstrahlung, photo-nuclear interactions, and $\tau$ neutrino regeneration.
+
+\subsection{Cherenkov Cone}
+\label{subsec:cherenkov_width}
+The width of the Cherenkov cone is parametrized separately for the electromagnetic and hadronic components of the shower, according to References \cite{JaimeAskarian2000} and \cite{jaime05}, respectively.
+
+The width of the electromagnetic
+component in degrees is characterized by:
+\begin{equation}
+\label{eq:deltheta_em}
+\Delta\theta_{em}(\nu)=2.7^{\circ} \cdot \frac{\nu_0}{\nu}\cdot \left(
+  \frac{E_{LPM}}{ 0.14 E_{EM}+E_{LPM}} \right)^{0.3} \;,
+\end{equation}
+where 
+$E_{EM}$ is the part of the shower energy associated with electromagnetic particles, and 
+$E_{LPM}$ is energy above which the Landau-Pomeranchuk-Migdal
+(LPM) effect becomes important.  
+The LPM effect causes
+the bremsstrahlung interaction to become suppressed because
+the momentum transfer ($\propto k/E^2$) becomes so small 
+that the Heisenberg uncertainty
+causes the interaction to occur over many
+scattering centers, resulting in destructive interference.  
+This effect reduces the width of the Cherenkov cone, but not the magnitude of the electric field at the Cherenkov angle.
+$E_{LPM}$ is set to $2\times10^{15}\ev$ following the recommendation in Reference~\cite{JaimeAskarian2000}, and can be scaled to other media using the ratio of the respective radiation lengths.
+%~\cite{pdg}:
+%\begin{equation}
+%E_{LPM}=2\times10^{15} \frac{X_0^{\mathrm{medium}}}{X_0^{\mathrm{ice}}}
+%\end{equation}
+%where ${X_0^\mathrm{ice}}=39.5$\,cm is the radiation length of ice and
+%$X_0^{\mathrm{medium}}$ is the radiation length of the medium of interest.
+
+
+The width of the Cherenkov cone for hadronic showers is modeled as laid out in Equation 9
+in~\cite{jaime05}:
+\begin{equation}
+\Delta \theta_{\mathrm{had}}=\frac{c}{\nu} \cdot
+	\frac{\rho}{\mathrm{K}_{\Delta} X_0} \cdot
+	\frac{1}{n^2-1} \;,
+\end{equation}
+\noindent where
+$c$ is the speed of light,
+$\nu$ is the frequency considered, 
+$\rho$ is the density of ice,
+$\mathrm{K}_{\Delta}$ is a normalization constant determined by a
+separate Monte Carlo simulation~\cite{jaime05},
+$X_0$ is the radiation length, and
+$n$ is the index of refraction.
+
+The signal strength at viewing angle $\theta$ 
+away from the Cherenkov angle $\theta_C$ is also parametrized following
+Equation\,13 in Reference\,~\cite{jaime05}:
+\begin{equation}
+\mathcal{E}(\theta)=\frac{\sin{\theta}}{\sin{\theta_C}} \cdot
+\mathcal{E}(\theta_C)\cdot \exp\left[-\left(
+    \frac{\theta-\theta_C}{\Delta\theta_{\mathrm{em,had}}} \right)^2
+\right] \;.
+\end{equation}
+
+
+
+
