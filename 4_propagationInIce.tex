@@ -42,28 +42,27 @@ The electric field magnitude at the payload position (before applying
 the ANITA instrument response) is calculated as follows:
 \begin{equation}
  \mathcal{E}_{\perp,||} = \mathcal{E}^{(\mathrm{@ 1m})}  
- \mathrm{e}^{(-d_{ice}\ /\ \ell_{attn})}
- \frac{t_{\perp,||}}{d_{ice} + d_{air}}
- \ F_{taper}(\theta_{view}-\theta_{ch}) \,.
+ \mathrm{e}^{(-d_{\mathrm{ice}}\ /\ \ell_{\mathrm{attn}})}
+ \frac{t_{\perp,||}}{d_{\mathrm{ice}} + d_{\mathrm{air}}}
+ \ F(\theta_{\mathrm{view}}-\theta_{\mathrm{ch}}) \,.
 \end{equation}
-The first factor accounts for propagation in ice, with $d_{ice}$ being the path length and $\ell_{attn}$ the attenuation length in ice. 
+The first factor after $\mathcal{E}^{(\mathrm{@ 1m})}$ accounts for propagation in ice, with $d_{\mathrm{ice}}$ being the path length and $\ell_{\mathrm{attn}}$ the attenuation length in ice. 
 The second factor accounts for the refraction from ice to air, using
 the specular Fresnel coefficients, $t_{||}$ and $t_{\perp}$, for the parallel and perpendicular components of the normalized transmitted electric field vector at the ice-air interface with respect to the local surface normal.
-Finally, $F_{taper}(\theta_{view}-\theta_{ch})$ is a geometrical attenuation factor of the field strength resulting from viewing the Cherenkov emission ``off-cone'' at an angle $\theta_{view}$ different from the Cherenkov angle $\theta_{ch}$.
-The functional form of $F_{taper}$ is taken to be Gaussian and is set to zero for ($\theta_{view}-\theta_{ch}$) > 20 $\Delta \theta$, where $\Delta \theta$ is the width of the Cherenkov cove. 
+Finally, $F(\theta_{\mathrm{view}}-\theta_{\mathrm{ch}})$ is a geometrical attenuation factor of the field strength resulting from viewing the Cherenkov emission ``off-cone'' at an angle $\theta_{\mathrm{view}}$ different from the Cherenkov angle $\theta_{ch}$.
+The functional form of $F$ is taken to be Gaussian and is set to zero for ($\theta_{\mathrm{view}}-\theta_{\mathrm{ch}}$) > 20 $\Delta \theta$, where $\Delta \theta$ is the width of the Cherenkov cove. 
 %\CD{Say something about what happens for the reflected solution?}
 %\BS{You don't explicitly explain the spherical power intensity loss $\frac{1}{d_{ice}+d_{air}}$ factor below the Fresnel components?}
 
 %The user may set the attenuation length for radio in ice to be  a constant value (conservatively 700\,m), 
 
-The in-ice polarization vector is calculated using the neutrino
-velocity vector and in-ice propagation vector, which lies radially
-outward from the Cherenkov cone, as Cherenkov radiation is radially polarized.
+Cherenkov radiation is radially polarized, and the in-ice polarization vector is calculated using the neutrino velocity vector and in-ice propagation vector, which lies radially outward from the Cherenkov cone.
 Attenuation lengths for radio in Antarctica are based on measurements performed at the Ross Ice Shelf and the South Pole~\cite{smex}.
-The index of refraction is taken as 1.79 for deep ice and 1.325 at the surface. A model for the firn (layers of packed snow) based on data taken by the RICE Collaboration~\cite{PhysRevD.73.082002}, is used at depths shallower than 150\,m.
+The index of refraction is taken as 1.79 for deep ice and 1.325 at the surface. A model for the firn (layers of packed snow) based on data taken by the RICE Collaboration~\cite{PhysRevD.73.082002} is used at depths shallower than 150\,m.
 
 Future versions of \icemc will include effects of ice surface
 roughness.
+
 
 %\subsection{Fresnel Factor}
 

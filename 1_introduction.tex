@@ -2,7 +2,7 @@
 The Antarctic Impulsive Transient Antenna (ANITA) experiment is a NASA-funded, balloon-borne experiment aiming primarily to detect Ultra-High-Energy (UHE) neutrinos and cosmic rays~\cite{ANITA1detector,ANITA1paper,ANITA2paper,ANITA2erratum}.
 UHE neutrinos may be produced when cosmic rays interact with the
 cosmic microwave background, either through the Greisen Zatsepin
-Kuzmin (GZK)~\cite{greisen1966end,zatsepin1966gt} mechanism or through photo-disintegration; or directly from an astrophysical source.
+Kuzmin (GZK)~\cite{greisen1966end,zatsepin1966gt} mechanism or through photo-disintegration, or directly from an astrophysical source.
 UHE neutrinos interact in the Antarctic ice and produce a coherent radio pulse of Askaryan radiation~\cite{askaryan}. UHE cosmic rays interact with the geomagnetic field to produce a coherent radio impulse~\cite{ANITA1UHECR}. The geometry of the Earth's magnetic field in Antarctica allows ANITA to distinguish the signatures of these two types of events through their polarization.
 
 The ANITA experiment flies approximately 40\,km above Antarctica looking for radio signals in the band between 200 and 1200\,MHz, produced by UHE neutrinos and cosmic rays.
@@ -35,10 +35,10 @@ A flowchart of the \icemc simulation steps is shown in Figure~\ref{fig:intro_ice
 %The simulation models neutrino interactions in the ice from a specific energy or following a theoretical energy spectrum.
 At the beginning of each run the user can choose which ANITA flight to simulate and which neutrino energy spectrum to use.
 For each neutrino event, the position along the ANITA flight path, as well as the neutrino interaction position are randomly chosen.
-These are used to find the path to the ANITA detector (Section~\ref{sec:eventGeometry}).% and used to calculate the event weight.
+These are used to find the path to the ANITA detector (Section~\ref{sec:eventGeometry}). % and used to calculate the event weight.
 %The restrictions in neutrino phase space  that arise in the selection of the neutrino interaction positions and neutrino directions are corrected for in the final calculation (see Section~\ref{sec:weights}).
-The neutrino direction is then chosen within allowed angles; the neutrino energy is chosen following the input theoretical model; and the neutrino flavour and interaction type are chosen according to their expected ratio. 
-These parameters are used to produce the radio frequency pulse following the Askaryan model described in Section~\ref{sec:rf}.
+The neutrino direction is then chosen within detectable angles; the neutrino energy is chosen following the input theoretical model; and the neutrino flavour and interaction type are chosen according to their expected ratios. 
+These parameters are used to produce the radio-frequency pulse following the Askaryan model described in Section~\ref{sec:rf}.
 The signal is then propagated through the ice and air to the ANITA
 detector (see Section~\ref{sec:propagation}). 
 The response of the ANITA signal chain is simulated, and the resulting 
@@ -47,10 +47,8 @@ data are saved in the same format as ANITA flight data
 Different parts of the simulation are validated against data taken both in
 the lab and in-flight during the past ANITA flights (see
 Section~\ref{sec:validation}).
-Finally the neutrino acceptance of the third and fourth ANITA flight is
-presented, and how the uncertainties in the different parts of the
-simulation impact the acceptance (see Section~\ref{sec:results}).
-
+Finally the neutrino acceptance of the third and fourth ANITA flights, and
+the contributions of the different parts of the simulation to the uncertainties on the acceptance are presented in Section~\ref{sec:results} .
 
 
 %\section{Motivation}
@@ -59,14 +57,16 @@ simulation impact the acceptance (see Section~\ref{sec:results}).
 \label{sec:anita3}
 The first two ANITA payloads flew in 2006-2007\cite{ANITA1paper} and 2008-2009\cite{ANITA2paper,ANITA2erratum}, respectively.
 Although \icemc can be used to simulate older flights, this paper focusses on the simulation of the third and fourth flights.
+
+Figure~\ref{fig:ANITA_flightPath} shows the flight paths of the ANITA-III and ANITA-IV instruments. 
+The colormap shows the Antarctic ice depth. 
 The third ANITA payload (ANITA-III) launched on December 18$^{\text{th}}$, 2014 from the
 NASA Long Duration Balloon (LDB) facility near McMurdo Station, Antarctica.
 ANITA-III followed the polar vortex flying at the altitude of 37\,km for
 22 days until January 9$^{\text{th}}$, 2015 when the flight was terminated
 near Australian Davis Station.
 Similarly, the fourth ANITA payload (ANITA-IV) launched on December 2$^{\text{nd}}$, 2016 from the NASA LDB facility in Antarctica and landed approximately 100\,km from the South Pole Station on December 29$^{\text{th}}$, 2016.
-Figure~\ref{fig:ANITA_flightPath} shows the flight paths of the ANITA-III and ANITA-IV instruments. 
-The colormap shows the Antarctic ice depth.
+
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/Flightpath_ANITA3.png}
@@ -98,18 +98,18 @@ ones~\cite{ANITA1paper,ANITA2paper}, using 48 dual polarization quad-ridged horn
 The antennas were arranged in three rings forming 16 azimuthal sectors per ring (the top ring is divided into two layers to fit into the launch envelope specifications), as shown in Figure~\ref{fig:intro_ANITAconcept}.
 
 Figure~\ref{fig:ANITA3_signalChain} shows a schematic of the ANITA-III signal chain. 
-The receiving antenna measures vertical and horizontal polarization signals of incident radio waves, which then follow twin paths. 
+The receiving antenna measures vertical and horizontal polarization components of incident radio waves, which then follow twin paths. 
 After passing through filters and amplifiers, the signal is split into
 the trigger and digitizer paths.
 In the trigger path the signal passes
 through a tunnel diode which acts as a square-law detector over the
-input range. The output of the tunnel diode is compared to the channel
-threshold, which is dynamically adjusted by a PID loop to maintain a desired 
-rate for each antenna. A combination of first-level and second-level triggers forms a
+input. The output of the tunnel diode is compared to the channel
+threshold, which is dynamically adjusted by a PID loop to maintain the
+rate for each antenna around 500\,kHz. A combination of first-level (L1) and second-level (L2) triggers forms a
 global trigger which can be issued in each polarization.
 When a trigger is issued, a switched capacitor array digitizes the signal with a mean sample rate of 2.6\,GSa/s. 
-The ANITA-IV signal chain included the Tunable Universal Filter Frontend boards (see Subsection~\ref{subsec:tuffs}), and $90^{\circ}$ hybrids to convert the signal into left- and right- circularly polarized (LCP and RCP) components. 
-The ANITA-IV trigger logic also required a coincidence between LCP and RCP signals within a 4\,ns coincidence window, implying a linear polarization requirement on the trigger. 
+The ANITA-IV signal chain included the Tunable Universal Filter Frontend boards (see Subsection~\ref{subsec:tuffs}), and $90^{\circ}$ hybrids to convert the signals into left- and right- circularly polarized (LCP and RCP) components. 
+The ANITA-IV trigger logic also required a coincidence between LCP and RCP signals within a 4\,ns coincidence window to select for linearly polarized signals. 
 
 As the payload rotates freely, two sets of GPS units were used to independently determine the
 payload position and attitude.

@@ -21,17 +21,18 @@ band of 0.2-1.2\,GHz.
 
 \subsection{Neutrino flavors and interaction types}
 \label{subsec:emhadshower}
-The \icemc program assumes flavour democracy: 
-the flavors are fully mixed by the time the neutrinos get to the ice.
+The \icemc program assumes flavor democracy, assuming 
+the flavors are fully mixed before the neutrinos get to the ice.
 Information about each flavor is stored separately so the sensitivity to each flavour may be quoted separately.
 
 The neutrino event undergoes a charged/neutral current interaction in
-$68.65\%$/31.35\% of cases.
+$69\%$/32\% of cases.
 %of the events at random are chosen to be charged current and the remainder to be neutral current.
 For charged current electron neutrino interactions the electromagnetic
 component is calculated as $1-y$, where $y$ is the inelasticity and is
 approximated by a double-exponential function~\cite{gandhi}. 
-In all other cases the electromagnetic component is considered negligible and the hadronic component is equal to the inelasticity.
+In all other cases the electromagnetic component is considered negligible.
+The hadronic component is equal to the inelasticity.
 Secondary particles are not propagated.
 
 %A future version of the code will include $\mu/\tau$ bremsstrahlung, photo-nuclear interactions, and $\tau$ neutrino regeneration.
@@ -39,7 +40,6 @@ Secondary particles are not propagated.
 \subsection{Cherenkov Cone}
 \label{subsec:cherenkov_width}
 The width of the Cherenkov cone is parametrized separately for the electromagnetic and hadronic components of the shower, according to References \cite{JaimeAskarian2000} and \cite{jaime05}, respectively.
-
 The width of the electromagnetic
 component in degrees is characterized by:
 \begin{equation}
@@ -58,7 +58,9 @@ that the Heisenberg uncertainty
 causes the interaction to occur over many
 scattering centers, resulting in destructive interference.  
 This effect reduces the width of the Cherenkov cone, but not the magnitude of the electric field at the Cherenkov angle.
-$E_{LPM}$ is set to $2\times10^{15}\ev$ following the recommendation in Reference~\cite{JaimeAskarian2000}, and can be scaled to other media using the ratio of the respective radiation lengths.
+Following the recommendation in Reference~\cite{JaimeAskarian2000}, 
+$E_{LPM}$ is set to $2\times10^{15}\ev$
+and can be scaled to other media using the ratio of the respective radiation lengths.
 %~\cite{pdg}:
 %\begin{equation}
 %E_{LPM}=2\times10^{15} \frac{X_0^{\mathrm{medium}}}{X_0^{\mathrm{ice}}}

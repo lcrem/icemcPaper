@@ -20,22 +20,21 @@ The area of each bin is calculated following:
 \end{equation}
 \noindent where the limits of the integrals define the edges of the bin in
 latitude and longitude.
-The \icemc program finds $2.976 \times 10^{16}$ m$^3$ of Antarctic ice in this model, compared to $3.011 \times 10^{16}$ m$^3$ reported by the US Geological Survey~\cite{usgs} (1.15\% difference).
-
-%It is also possible to run the simulation using BEDMAP ice thickness
-%and subglacial topographic model of Antarctica, developed by the
-%British Antarctic Survey~\cite{bedmap}
-%This model has a much more accurate representation of the ice in
-%Antarctica, but it is much slower to run, so by default we use
-%Crust2.0.
+It is also possible to run the simulation using BEDMAP ice thickness
+and subglacial topographic model of Antarctica, developed by the
+British Antarctic Survey~\cite{bedmap}
+This model has a much more accurate representation of the ice in
+Antarctica, but it is much slower to run, so by default we use
+Crust2.0.
 %When using BEDMAP the total volume of ice in Antarctica is found to be 
 %$2.47956e \times 10^{16}$\,m$^3$. 
+The \icemc program finds $2.976 \times 10^{16}$ m$^3$ of Antarctic ice in this model, compared to $3.011 \times 10^{16}$ m$^3$ reported by the US Geological Survey~\cite{usgs} (1.15\% difference).
 
 \subsection{Picking Interaction Point and Direction}
 \label{sec:pickneutrino}
 
 For each neutrino event, the payload position is chosen at random from a set of positions along the ANITA flight path (see Figure~\ref{fig:ANITA_flightPath}).
-To simulate only those neutrino interactions that might lead to a detectable signal, interaction positions are limited to occur within the horizon as seen by the payload, and neutrino directions are chosen from an annulus on the sky consistent with viewing angles detectable at the payload (see Section~\ref{sec:weights}).
+To simulate only those neutrino interactions that might lead to a detectable signal, interaction positions are limited to occur within the horizon as seen by the payload (roughly between 700 and 800\,km from the payload), and neutrino directions are chosen from an annulus on the sky consistent with viewing angles detectable at the payload (see Section~\ref{sec:weights}).
 %from the Cherenkov angle at the payload (see Section~\ref{sec:weights}).
 
 %maximum angle that the ray may diverge from the center of the Cerenkov cone for the interaction to still be detectable,
@@ -47,16 +46,14 @@ To simulate only those neutrino interactions that might lead to a detectable sig
 %determine which bin the interaction occurs in, and at what elevation within that bin.  
 %The exact position of the interaction in the longitudinal and
 %latitudinal directions is chosen at random within the bin.  
-Half of the events thrown are assumed to come from a direct detection,
-i.e. the signal is propagated from the interaction position upwards to
-the payload.
-For the other half of the events, the signal is propagated downwards
+Both direct and reflected detections are simulated.
+In the first case the signal is propagated from the interaction position upwards to the payload. In the second case, the signal is propagated downwards
 towards to the ice-rock interface (approximated to a flat mirror)
 where the signal is then reflected upwards towards the payload. 
 
-The neutrino interaction direction is chosen at random in the
-elevation ($\theta$) and azimuth ($\phi$) space.
-The elevation angle is constrained to values that would allow the interaction to be detected by ANITA. 
+%The neutrino interaction direction is chosen at random in the
+%elevation ($\theta$) and azimuth ($\phi$) space.
+%The elevation angle is constrained to values that would allow the interaction to be detected by ANITA. 
 
 %Neutrino directions are only generated such that $|\theta_{\nu,ice}-\theta_{c}|<\theta_{th}$ where $\theta_{\nu,ice}$ is the angle  between the neutrino  direction and the direction from the interaction point in the ice, $\vec{n}_{ray}$ to the payload. 
 %For direct rays $\vec{n}_{ray}$ is the direction of from the interaction point to the payload position; for reflected rays it is the mirror vector from the mirror interaction point to the payload, which means here $\vec{n}_{ray}$ is downward.
@@ -98,7 +95,7 @@ The elevation angle is constrained to values that would allow the interaction to
 \subsection{Event weighting}
 \label{sec:weights}
 To minimize computation time,
-each event is weighted according to the probability of the neutrino reaching the detector, as well as
+each event is weighted according to the probability of the neutrino reaching the interaction point without being absorbed in the earth, as well as
 the "phase space" reduction (defined below), such that only those topologies that give measurable signal are fully simulated. 
 As a neutrino moves through the earth, it encounters varying
 densities as it passes through layers of the earth's interior,
@@ -140,9 +137,9 @@ water-equivalent amount of material traversed.
 %\subsection{Phase Space Factor}
 %\label{subsec:weightPhasespace}
 
-The phase space factor is the product of the neutrino interaction
-position and neutrino direction weights.
-The position weight arises when the neutrino interaction position is
+The phase space factor is the product of the weights derived from the neutrino interaction position and neutrino direction.
+These weights are assumed to be independent of one another.
+The position weight arises due to the neutrino interaction position being
 chosen only within the payload horizon.
 This is calculated as
 the ratio of the volume of ice within the horizon for the $i^{th}$
@@ -163,9 +160,9 @@ volumes in Figure~\ref{fig:weights}).
 %spaced balloon positions along its circular path.  For each event,
 %we take the pre-calculated volume for the 
 %balloon position that is closest to the balloon position for that event.
-The neutrino direction is chosen such that its Cherenkov cone
+The neutrino direction is chosen such that the axis of the Cherenkov cone
 lies close in solid angle to the direction from the interaction point to the payload. 
-The correspondent weight is calculated as the ratio of the solid angle coming from the Cherenkov cone and a unit sphere (see purple cone in Figure~\ref{fig:weights}).
+The direction weight is calculated as the ratio of the solid angle coming from the Cherenkov cone and a unit sphere (see purple cone in Figure~\ref{fig:weights}).
 
 %it is possible that the event is observable 
 %under the most optimistic of
@@ -179,10 +176,10 @@ The correspondent weight is calculated as the ratio of the solid angle coming fr
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.8\linewidth, trim = 0 6.5cm 0 0, clip]{./Figs/icemcWeightScheme.png}
-  \caption{A schematic of the importance weights used in \icemc. The
+  \caption{A schematic of the phase space weights used in \icemc. The
     position weight arises because only interaction positions within
     the balloon horizon are simulated (yellow over blue area).
-  The direction weight arises because only favourable directions within the
+  The direction weight arises because only favourable directions around the
   Cherenkov cone are simulated (purple angle over a unit sphere).}
   \label{fig:weights}
 \end{figure}
