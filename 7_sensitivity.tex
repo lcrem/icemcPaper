@@ -1,7 +1,7 @@
 \section{ANITA sensitivity}
 \label{sec:results}
 
-The simulation files produced with \icemc are used by the ANITA analysis group to tune analysis cuts, check the rate of accidental clusterings, and also to simulate sources like Gamma Ray Bursts and Active Galactic Nuclei.
+The simulation files produced with \icemc are used by the ANITA analysts to tune analysis cuts, check the rate of accidental clustering, and also to simulate sources like Gamma Ray Bursts and Active Galactic Nuclei.
 Finally, the simulation is used to calculate the experimental sensitivity.
 
 \subsection{Acceptance}
@@ -12,10 +12,10 @@ The ANITA collaboration uses \icemc to calculate the experiment volumetric accep
   \effvol = \dfrac{n_{{pass}}(E)V_0\Omega}{N(E)} \;,
 \end{equation}
 \noindent where
- $n_{{pass}}(E)$ is the weighted (see Section~\ref{sec:weights}) number of events that pass the trigger,
+ $n_{{pass}}(E)$ is the weighted (see Section~\ref{sec:weights}) number of events that pass the trigger at a given energy $E$,
  $V_0$ is the volume of ice in Antarctica viewed by ANITA,
 $\Omega$ is $4\pi$ steradians, and 
- $N(E)$ is number of neutrinos thrown by each simulation.
+ $N(E)$ is number of neutrinos thrown by each simulation at that energy $E$.
 
 The ANITA acceptance (\effarea) is calculated following:
 \begin{equation}
@@ -30,26 +30,27 @@ The interaction length is calculated following:
    \label{eq:intlength}
     \ell_{{int}}(E_\nu) =   \dfrac{M_{NUCL}}{\sigma(E) \rho_{h_2o} } \;,
   \end{equation}
+  
 \noindent where
- $M_{NUCL}$ is the atomic nuclear mass ($1.66\times 10^{-27}$\,kg),
+ $M_{NUCL}$ is the atomic nuclear mass ($1.66\cdot 10^{-27}$\,kg),
  $\rho_{h_2o}$ is the density of water (1000\,kg/m$^3$), 
 and $\sigma(E)$ is the neutrino cross-section for $\nu$ charged-current interactions.
 Currently the neutrino cross-section is calculated using either the
-Reno et al.~\cite{reno2005high}
-or the Connolly et al. parametrizations~\cite{PhysRevD.83.113009}.
+Reno {\it et al.}~\cite{reno2005high}
+or the Connolly {\it et al.} parametrizations~\cite{PhysRevD.83.113009}.
 The latter is the default.
 
 Although recent neutrino cross-section measurements by the IceCube
 Collaboration reached the multi-TeV
 scale~\cite{aartsen2017measurement,bustamante2017measurement}, there
-are still no measurements at energies above $10^{15}$\ev.
+are still no measurements at energies above 10\,TeV.
 The current theoretical models can extrapolate the cross-sections up to $10^{21}$\ev~\cite{PhysRevD.83.113009,reno2005high},
 but the associated uncertainties are
 large, and the impact on the ANITA acceptance is
 non-negligible.
 Figure~\ref{fig:acceptanceVSxsec}(right) shows the effect of changing the
 cross-section parametrization on the ANITA-III acceptance.
-The nominal Connolly et al parametrization (used by default in
+The nominal Connolly {\it et al} parametrization (used by default in
 \icemc) is compared to the upper and lower bound set by
 Reference~\cite{PhysRevD.83.113009}, and to the alternate
 parametrization suggested by Reference~\cite{reno2005high}.
@@ -71,8 +72,8 @@ parametrization suggested by Reference~\cite{reno2005high}.
   \label{fig:acceptanceVariations}
 \end{figure}
 
-Figure~\ref{fig:acceptanceVSxsec}(left) shows the ANITA-III and ANITA-IV volumetric acceptances and their ratio.
-The ANITA-IV hardware improvements (use of better low noise amplifiers, the tunable notch filters to avoid carrier wave noise, and the use of LCP-RCP trigger coincidences to avoid satellite noise) enabled ANITA-IV to improve by 50\% at high energy and by a factor of 4 at low energy.
+Figure~\ref{fig:acceptanceVSxsec}(right) shows the ANITA-III and ANITA-IV volumetric acceptances and their ratio.
+The ANITA-IV hardware improvements (use of better low noise amplifiers, the tunable notch filters to avoid carrier wave noise, and the use of LCP-RCP trigger coincidences to avoid satellite noise) enabled ANITA-IV to improve by 50\% at high energy.
 
 Volumetric acceptances are also used to compare the impact of different hardware choices.
 ANITA-III was highly affected by satellite noise and had to employ channel masking throughout the entire flight to avoid overloading the trigger. Figure~\ref{fig:acceptanceVariations}~(left) shows that channel masking reduced the ANITA-III sensitivity by more than 50\% across all energy bins.
@@ -81,7 +82,7 @@ ANITA-IV used the TUFF boards to avoid carrier wave noise: Figure~\ref{fig:accep
 
 \subsection{Limit}
 \label{subsec:limit}
-The 90\% confidence level on the diffuse neutrino flux is set by using:
+The projected 90\% confidence level on the diffuse neutrino flux is set by using:
 \begin{equation}
 \left( \dfrac{Ed^4N}{dE dA d\Omega dt}\right)_{lim} =
 \dfrac{s_{up}}{ T \cdot \epsilon_{ana} (E_\nu) \cdot \effarea \cdot \Delta} \, ,
@@ -92,23 +93,24 @@ $s_{up}$ is the upper (one-sided) limit for the mean of a Poisson
 variable given 0 observed events in the absence of background for 90\%
 CL, 
 $T$ is the live time 
-(17.4 days for ANITA-III and 24.25 days for ANITA-IV) 
-%\CD{Did you calculate the A4 number yourself? I think the way the calculation in the TUFF paper was done was an underestimate} ,
+(17.4 days for ANITA-III and 24.25 days for ANITA-IV), 
 $\epsilon_{ana}(E_\nu)$ is the neutrino analysis efficiency,
 \effarea is the experiment acceptance as a function of the neutrino
 energy, and $\Delta=4$ is a model-independent factor following Reference~\cite{PhysRevD.73.082002}.
 
 
-Figure~\ref{fig:sensitivity} shows the projected ANITA-IV (and joint ANITA\,I-IV) sensitivity if no neutrinos are observed, assuming an 80\% analysis efficiency
-across all energies. 
-This is compared to the latest ANITA-III (and ANITA\,I-III) published limits, as well as the latest constraints coming from the IceCube and Auger experiments.
-%If ANITA-IV saw no neutrinos, ANITA would set another world leading limit on the cosmogenic neutrino flux above $10^{19}$\,eV.
-
+Figure~\ref{fig:sensitivity} shows the ANITA-III, ANITA-IV and ANITA\,I-IV limits as calculated in References~\cite{anita3cosmogenic,anita4cosmogenic}.
+These are compared to the latest constraints coming from the IceCube~\cite{icecube2018} and Auger experiments~\cite{auger2017}, as well as
+four cosmogenic neutrino models~\cite{kkss2002,takami2009,ahlers2012,kotera2010cosmogenic}.
 
 \begin{figure}[!h]\centering
- \includegraphics[width=.65\linewidth]{./Figs/LimitTemp_ANITA4.pdf}
- \caption{Projected ANITA-IV (and ANITA\,I-IV) sensitivity if no neutrinos are observed and assuming an 80\% flat analysis efficiency.
- The experiment sensitivity is compared to the latest published ANITA-III, IceCube and Auger limits.}
+ \includegraphics[width=.65\linewidth]{./Figs/Limit4icemcPaper.pdf}
+ \caption{
+ ANITA-III and ANITA-IV limit on the all flavor diffuse UHE neutrino flux and a combined limit from ANITA I-IV, as calculated in References~\cite{anita3cosmogenic,anita4cosmogenic}.
+ The most recent UHE neutrino limits
+from the Auger~\cite{auger2017} and IceCube~\cite{icecube2018} experiments, and
+four cosmogenic neutrino models~\cite{kkss2002,takami2009,ahlers2012,kotera2010cosmogenic} are also displayed. 
+}
  \label{fig:sensitivity}
 \end{figure}
 
@@ -158,9 +160,8 @@ simulation of ultra high energy neutrino interactions in the Antarctic
 ice and their detection by the ANITA experiment.
 The data taken before or during the ANITA flights are used to validate the
 simulation.
-The latest ANITA-IV sensitivity is provided in the form of the
-acceptance and cosmogenic neutrino sensitivity.
-If ANITA-IV observed zero neutrinos, ANITA would again dominate the world limit on the cosmogenic neutrino flux above $10^{19}$\,eV.
+The latest ANITA-III, ANITA-IV and ANITA\,I-IV performance is provided in the form of the
+acceptance and energy dependent neutrino limit.
  
 Future versions of the tool will include the possibility to use extensive air showers inputs from ZHAireS~\cite{alvarez2012monte}; improved and refined ice properties modeling and surface roughness effects; the contribution of the sun to the thermal noise; and carrier wave noise as measured during the ANITA-III and ANITA-IV flights.
 We are also working towards expanding the framework so that it can be used by all radio experiments based in Antarctica.

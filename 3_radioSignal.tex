@@ -9,13 +9,12 @@ to get the peak of the Askaryan signal at 1\,m from the point of interaction, $\
 according to Reference~\cite{JaimeAskarian2000} and following:
 \begin{equation}
 \label{eq:vmmhz}
-\mathcal{E}^{(\mathrm{@ 1m})} =2.53\times 10^{-7}\cdot \frac{\sin{\theta_v}}{\sin{\theta_c}}\cdot  \frac{E}{\mathrm{TeV}} \cdot \frac{\nu}{\nu_0} \cdot \frac{1}{1.+\left( \frac{\nu}{\nu_0} \right)^{1.44}} \;,
+\mathcal{E}^{(\mathrm{@ 1m})} =2.53\times 10^{-7}\cdot \frac{\sin{\theta_{\mathrm{view}}}}{\sin{\theta_{\mathrm{Ch}}}}\cdot  \frac{E}{\mathrm{TeV}} \cdot \frac{\nu}{\nu_0} \cdot \frac{1}{1+\left( \frac{\nu}{\nu_0} \right)^{1.44}} \;,
 \end{equation}
 \noindent where $\nu$ is the frequency, $\nu_0=1.15$\,GHz, $E$ is
 the shower energy (see Subsection~\ref{subsec:emhadshower}),
 %\CD{Is the hadronic shower treated differently from the em?}
-$\theta_v$ is the viewing angle and $\theta_c$ is the Cherenkov angle
-(see Subsection~\ref{subsec:cherenkov_width}). 
+$\theta_{\mathrm{view}}$ is the viewing angle and $\theta_{\mathrm{Ch}}$ is the Cherenkov angle.
 This parametrization is valid up to 5\,GHz, covering the ANITA
 band of 0.2-1.2\,GHz.
 
@@ -23,7 +22,7 @@ band of 0.2-1.2\,GHz.
 \label{subsec:emhadshower}
 The \icemc program assumes flavor democracy, assuming 
 the flavors are fully mixed before the neutrinos get to the ice.
-Information about each flavor is stored separately so the sensitivity to each flavour may be quoted separately.
+Information about each flavor is stored separately so the sensitivity to each flavor may be quoted separately.
 
 The neutrino event undergoes a charged/neutral current interaction in
 $69\%$/32\% of cases.
@@ -72,7 +71,7 @@ and can be scaled to other media using the ratio of the respective radiation len
 The width of the Cherenkov cone for hadronic showers is modeled as laid out in Equation 9
 in~\cite{jaime05}:
 \begin{equation}
-\Delta \theta_{\mathrm{had}}=\frac{c}{\nu} \cdot
+\Delta \theta_{\mathrm{had}} (\nu) =\frac{c}{\nu} \cdot
 	\frac{\rho}{\mathrm{K}_{\Delta} X_0} \cdot
 	\frac{1}{n^2-1} \;,
 \end{equation}
@@ -86,12 +85,12 @@ $X_0$ is the radiation length, and
 $n$ is the index of refraction.
 
 The signal strength at viewing angle $\theta$ 
-away from the Cherenkov angle $\theta_C$ is also parametrized following
+away from the Cherenkov angle $\theta_{\mathrm{Ch}}$ is also parametrized following
 Equation\,13 in Reference\,~\cite{jaime05}:
 \begin{equation}
-\mathcal{E}(\theta)=\frac{\sin{\theta}}{\sin{\theta_C}} \cdot
-\mathcal{E}(\theta_C)\cdot \exp\left[-\left(
-    \frac{\theta-\theta_C}{\Delta\theta_{\mathrm{em,had}}} \right)^2
+\mathcal{E}(\theta)=\frac{\sin{\theta}}{\sin{\theta_{\mathrm{Ch}}}} \cdot
+\mathcal{E}(\theta_{\mathrm{Ch}})\cdot \exp\left[-\left(
+    \frac{\theta-\theta_{\mathrm{Ch}}}{\Delta\theta_{\mathrm{em,had}}} \right)^2
 \right] \;.
 \end{equation}
 

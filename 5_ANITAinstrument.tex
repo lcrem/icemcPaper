@@ -12,8 +12,7 @@ applied to the signal according to the incident angles on the E and H planes.
 The signal then follows the signal chain as shown in
 Figure~\ref{fig:ANITA3_signalChain}.
 First, the incident fields are folded into the vertical-polarization (VPOL) and horizontal polarization (HPOL) responses of the antennas. 
-The responses of these paths are divided into the trigger and digitizer
-paths.
+The responses of these components are divided into the trigger and digitizer paths.
 The digitizer and trigger responses were measured using calibration data taken before
 the flights. 
 Figure~\ref{fig:ANITA_ImpulseResponses}~(left) shows the
@@ -59,10 +58,10 @@ The time-dependent response for each channel for a given configuration is loaded
 
 \begin{figure}
   \centering
- \includegraphics[width=0.45\linewidth] {./Figs/config_P_response_freq.png} 
+ \includegraphics[width=0.4\linewidth] {./Figs/measured_gain_freq_on_off.pdf} 
  \includegraphics[width=0.45\linewidth] {./Figs/Icemc_tuffs.pdf} 
-  \caption{(Left) TUFF response in frequency domain (dB vs frequency). The dips in the response clearly mark the 260, 375, and 460 MHz notches turned on in this configuration~\cite{Allison:2017vtk}.
-  (Right) Example of carrier wave noise injected in \icemc with the third notch activated or not activated.}
+  \caption{(Left) Measured TUFF response in frequency domain (dB vs frequency) obtained in the lab. The dips in the response clearly mark the 260, 375, and 460 MHz notches turned on in this configuration and the 13\,dB attenuation at those frequencies is clear~\cite{Allison:2017vtk}.
+  (Right) Example of carrier wave noise injected in \icemc with the third notch activated and not activated.}
 \label{fig:TUFFs}
 \end{figure}
 
@@ -103,7 +102,7 @@ Events in this sample come from minimum bias triggers during the ANITA-III quiet
   \includegraphics[width=.45\linewidth]{./Figs/RayleighExample.pdf}
   \includegraphics[width=.45\linewidth]{./Figs/RayleighSigma_1V_old.pdf}
   \caption{Example of a Rayleigh fit for a sample channel in the
-    710.94\,MHz frequency bin (left). The fit is performed only to the rising edge and peak of the distributions, as most CW noise in in the tail. 
+    710.94\,MHz frequency bin (left). The fit is performed only to the rising edge and peak of the distributions, as most CW noise is in the tail. 
 Right: fitted amplitude, $\sigma(f_i)$, as a
     function of frequency (interpolating in the frequency range where power is filtered). }
   \label{fig:rayleighFits}
@@ -125,7 +124,7 @@ $\sigma(f_i)$, the fitted Rayleigh amplitude in that bin.
 %and $N_f$ is the total number of frequencies.
 
 This noise is added to the signal in the digitizer path.
-For the trigger path the noise is re-normalised using the bin-by-bin ratio of the
+For the trigger path the noise is re-normalized using the bin-by-bin ratio of the
 trigger to digitizer path impulse response in the frequency domain
 before adding it to the signal.
 
@@ -175,7 +174,8 @@ The shape of the diode response is described by the sum of two negative Gaussian
 \noindent where the values for the parameters are shown in
 Table~\ref{tab:diodeModelParameters};
 $f(t)$ is dimensionless.
-Reference~\cite{diodeModel} describes how the model was found. Figure~\ref{fig:ANITA_diodeModel} shows the diode response model function.
+%Reference~\cite{diodeModel} describes how the model was found. 
+Figure~\ref{fig:ANITA_diodeModel} shows the diode response model function.
 
 \begin{table}[h!]
 \caption{Tunnel diode model parameters used for the full band trigger in ANITA-III and ANITA-IV.}
@@ -213,7 +213,7 @@ threshold, $V_T$, multiplied by RMS voltage of the diode outputs coming from pur
 \begin{equation} 
   D(t) < V_T \cdot V_{RMS} \;.
 \end{equation}
-If the power output is lower than the threshold multiplied by the diode RMS at any point, then that channel passes the L0 trigger.
+If the power output is more negative than the threshold multiplied by $V_{RMS}$ at any point, then that channel passes the L0 trigger.
   See Figure~\ref{fig:ANITA_diodeOutput} for an example of diode
   output that does not pass the L0 trigger (left) and that does pass
   the L0 trigger (right).
@@ -221,8 +221,7 @@ If the power output is lower than the threshold multiplied by the diode RMS at a
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/ExampleDiodeOutput_NOpass.pdf}
   \includegraphics[width=.45\linewidth]{./Figs/ExampleDiodeOutput_pass.pdf}
-  \caption{Example of typical diode output coming from a pure thermal
-    noise waveform (left) and from a pulse (right). The red
+  \caption{Example of diode output that does not pass the L0 trigger (left) and that does pass the L0 trigger (right). The red
     line shows the value of $V_T \cdot V_{RMS}$, showing that the
     waveform on the right passes the L0 trigger and the waveform on
     the left does not.}
@@ -239,7 +238,7 @@ allow an in-flight calibration pulser to be used.
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/DiodeRMSfromFile.pdf}
-  \caption{Tunnel diode RMS for each channel. Channel 4 VPOL was broken during the ANITA flight; channel 5 HPOL had an additional filter applied to accommodate the use of an in-flight calibration system.}
+  \caption{Tunnel diode $V_{RMS}$ for each channel. The two channels with much higher $V_{RMS}$ are the broken channel, and the channel which had an additional filter applied to accommodate the use of an in-flight calibration system.}
   \label{fig:ANITA_diodeRMS}
 \end{figure}
  

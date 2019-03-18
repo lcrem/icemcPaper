@@ -1,6 +1,36 @@
 \appendix
 
 \section{Obtaining and using \icemc}
+\icemc can be obtained from the GitHub repository \url{https://github.com/anitaNeutrino/icemc}.
+The only mandatory requirement for the compilation of \icemc is a ROOT~\cite{brun1997root} installation.
+The compilation can be executed via the Makefile or using the CMake structure.
+
+To run \icemc one needs to define two environment variables and add them to the global path:
+\begin{itemize}
+    \item  \texttt{ICEMC\_SRC\_DIR} should point to the directory where the source code is saved;
+    \item  \texttt{ICEMC\_BUILD\_DIR} should point to the directory where the executable programs are.
+\end{itemize}
+
+To run icemc one can simply do:
+\begin{verbatim}
+./icemc -i {inputFile} -o {outputDirectory} -r {runNumber}
+-n {numberOfNeutrinos} -t {triggerThreshold} -e {energyExponent}
+\end{verbatim}
+
+All of the parameters are optional and if they are not specified inputs from \texttt{inputs.conf} are used. 
+The two standard input files for the ANITA-III and ANITA-IV flights come with the package.
+
+The output directory contains a series of root files with  information about all the neutrinos simulated, as well as a text file containing the neutrino survival efficiency at different stages of \icemc, and the volumetric acceptance.
+
+Other programs test a portion of the full \icemc tool:
+\begin{itemize}
+    \item {\tt testThermalNoise} simulates only the thermal noise at the payload for a specific ANITA flight.
+    \item {\tt testInputAfterAntenna} simulates the injection of an RF impulse after the antenna feed; this program is used to produce trigger efficiency scans similar to the ones taken before each ANITA flight.
+    \item {\tt testWAIS} simulates the WAIS pulser as described in Subsection~\ref{subsec:wais}.
+\end{itemize}
+
+To produce ANITA-like output files and use more advanced features of \icemc, the installation of \texttt{libFFTWwrapper} (\url{https://github.com/nichol77/libRootFftwWrapper/}) and the ANITA \texttt{eventReaderRoot} (\url{https://github.com/anitaNeutrino/eventReaderRoot}) is necessary. 
+
 
 %\section{Limit derivation}
 

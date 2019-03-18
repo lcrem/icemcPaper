@@ -3,7 +3,7 @@ The Antarctic Impulsive Transient Antenna (ANITA) experiment is a NASA-funded, b
 UHE neutrinos may be produced when cosmic rays interact with the
 cosmic microwave background, either through the Greisen Zatsepin
 Kuzmin (GZK)~\cite{greisen1966end,zatsepin1966gt} mechanism or through photo-disintegration, or directly from an astrophysical source.
-UHE neutrinos interact in the Antarctic ice and produce a coherent radio pulse of Askaryan radiation~\cite{askaryan}. UHE cosmic rays interact with the geomagnetic field to produce a coherent radio impulse~\cite{ANITA1UHECR}. The geometry of the Earth's magnetic field in Antarctica allows ANITA to distinguish the signatures of these two types of events through their polarization.
+UHE neutrinos interact in the Antarctic ice and produce a coherent radio pulse of Askaryan radiation~\cite{askaryan}. UHE cosmic rays interact with the geomagnetic field to produce a coherent radio impulse~\cite{suprun2003synchrotron,falcke2003detecting,ANITA1UHECR}. The geometry of the Earth's magnetic field in Antarctica allows ANITA to distinguish the signatures of these two types of events through their polarization.
 
 The ANITA experiment flies approximately 40\,km above Antarctica looking for radio signals in the band between 200 and 1200\,MHz, produced by UHE neutrinos and cosmic rays.
 Figure~\ref{fig:intro_ANITAconcept} shows a basic scheme of the
@@ -34,7 +34,7 @@ analysis selection and quantify the experiment's sensitivity.
 A flowchart of the \icemc simulation steps is shown in Figure~\ref{fig:intro_icemcFlow}.
 %The simulation models neutrino interactions in the ice from a specific energy or following a theoretical energy spectrum.
 At the beginning of each run the user can choose which ANITA flight to simulate and which neutrino energy spectrum to use.
-For each neutrino event, the position along the ANITA flight path, as well as the neutrino interaction position are randomly chosen.
+For each neutrino event, the position of the payload along the ANITA flight path, as well as the neutrino interaction position are randomly chosen.
 These are used to find the path to the ANITA detector (Section~\ref{sec:eventGeometry}). % and used to calculate the event weight.
 %The restrictions in neutrino phase space  that arise in the selection of the neutrino interaction positions and neutrino directions are corrected for in the final calculation (see Section~\ref{sec:weights}).
 The neutrino direction is then chosen within detectable angles; the neutrino energy is chosen following the input theoretical model; and the neutrino flavour and interaction type are chosen according to their expected ratios. 
@@ -56,10 +56,10 @@ the contributions of the different parts of the simulation to the uncertainties 
 \section{The ANITA flights}
 \label{sec:anita3}
 The first two ANITA payloads flew in 2006-2007\cite{ANITA1paper} and 2008-2009\cite{ANITA2paper,ANITA2erratum}, respectively.
-Although \icemc can be used to simulate older flights, this paper focusses on the simulation of the third and fourth flights.
+Although \icemc can be used to simulate older flights, this paper focuses on the simulation of the third and fourth flights.
 
 Figure~\ref{fig:ANITA_flightPath} shows the flight paths of the ANITA-III and ANITA-IV instruments. 
-The colormap shows the Antarctic ice depth. 
+The color map shows the Antarctic ice depth. 
 The third ANITA payload (ANITA-III) launched on December 18$^{\text{th}}$, 2014 from the
 NASA Long Duration Balloon (LDB) facility near McMurdo Station, Antarctica.
 ANITA-III followed the polar vortex flying at the altitude of 37\,km for
@@ -94,7 +94,7 @@ signal with a mean sample rate of 2.6\,GSa/s.}
 
 
 The ANITA-III and ANITA-IV instruments were similar to the two previous
-ones~\cite{ANITA1paper,ANITA2paper}, using 48 dual polarization quad-ridged horn antennas with bandwidth from 200 to 1200\,MHz (ANITA-I had 32 and ANITA-II had 40). 
+ones~\cite{ANITA1paper,ANITA2paper}, using 48 dual-polarization quad-ridged horn antennas with bandwidth from 200 to 1200\,MHz (ANITA-I had 32 and ANITA-II had 40). 
 The antennas were arranged in three rings forming 16 azimuthal sectors per ring (the top ring is divided into two layers to fit into the launch envelope specifications), as shown in Figure~\ref{fig:intro_ANITAconcept}.
 
 Figure~\ref{fig:ANITA3_signalChain} shows a schematic of the ANITA-III signal chain. 

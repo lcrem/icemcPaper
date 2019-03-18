@@ -34,10 +34,8 @@ The \icemc program finds $2.976 \times 10^{16}$ m$^3$ of Antarctic ice in this m
 \label{sec:pickneutrino}
 
 For each neutrino event, the payload position is chosen at random from a set of positions along the ANITA flight path (see Figure~\ref{fig:ANITA_flightPath}).
-To simulate only those neutrino interactions that might lead to a detectable signal, interaction positions are limited to occur within the horizon as seen by the payload (roughly between 700 and 800\,km from the payload), and neutrino directions are chosen from an annulus on the sky consistent with viewing angles detectable at the payload (see Section~\ref{sec:weights}).
-%from the Cherenkov angle at the payload (see Section~\ref{sec:weights}).
-
-%maximum angle that the ray may diverge from the center of the Cerenkov cone for the interaction to still be detectable,
+To simulate only those neutrino interactions that might lead to a detectable signal, interaction positions are limited to occur within the horizon as seen by the payload (roughly between 700 and 800\,km from the payload), and neutrino directions are chosen from an annulus on the sky consistent with viewing angles detectable at the payload (see Section~\ref{sec:weights}). 
+The maximum angle that the ray may diverge from the axis of the Cherenkov cone for the interaction to still be detectable depends on the electric field, the distance from the interaction to the payload and shower nature: this is typically between 10 and 13 degrees.
 %\icemc uses importance weights to account for the neutrino interaction position forced to occur within the payload horizon, and for the neutrino direction chosen to allow the ANITA instrument to detect it (see Section~\ref{sec:weights}).
 
 %Within that horizon, we stack the ice thicknesses of all the bins in longitude and latitude.  
@@ -46,7 +44,7 @@ To simulate only those neutrino interactions that might lead to a detectable sig
 %determine which bin the interaction occurs in, and at what elevation within that bin.  
 %The exact position of the interaction in the longitudinal and
 %latitudinal directions is chosen at random within the bin.  
-Both direct and reflected detections are simulated.
+Both direct and reflected detection is simulated.
 In the first case the signal is propagated from the interaction position upwards to the payload. In the second case, the signal is propagated downwards
 towards to the ice-rock interface (approximated to a flat mirror)
 where the signal is then reflected upwards towards the payload. 

@@ -54,11 +54,11 @@ thresholds corresponding to 450\,kHz scalers are used for all channels.
 The signals are recorded at the trigger (red line going to the
 oscilloscope in Figure~\ref{fig:scan_setup}) and the digitizer paths
 are used to validate the simulation.
-Figure~\ref{fig:scan_snr} shows a comparison between data and \icemc
-of the SNR measured at the trigger (left)
-and at the digitizer (right) as a function of the variable attenuation used
+Figure~\ref{fig:scan_snr} shows a comparison of the measured SNR in
+data and simulation at the trigger (left) and at
+the digitizer (right) as a function of the variable attenuation used
 during the scan.
-The measured SNR in the digitizer path has generally higher errors compared to the SNR in the trigger path, because the ANITA digitizer has on average a
+The measured SNR in the digitizer path generally has higher errors compared to the SNR in the trigger path, because the ANITA digitizer has on average a
 2.6\,GHz sampling rate, whereas the trigger path is measured with a
 fast oscilloscope. 
 
@@ -73,9 +73,8 @@ fast oscilloscope.
   \label{fig:scan_snr}
 \end{figure}
 
-Figure~\ref{fig:scans}(left) shows a data and simulation comparison of a trigger
-efficiency scan for the ANITA-III payload.
-The trigger efficiency is plotted a function of the SNR
+Figure~\ref{fig:scans}(left) shows a comparison between data and simulation of a trigger efficiency scan for the ANITA-III payload.
+The trigger efficiency is plotted as a function of the SNR
 measured in the trigger path.
 
 Before the ANITA-IV flight (Antarctica 2016), a similar set of measurements was collected at a 6\,MHz rate. 
@@ -84,7 +83,7 @@ A data and simulation comparison of the trigger efficiency for the ANITA-IV inst
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/EfficiencyScanNoDelaysA3_efficiencyVSsnrTrigger.pdf}
     \includegraphics[width=.45\linewidth]{./Figs/EfficiencyScanNoDelaysA4_efficiencyVSsnrTrigger.pdf}
-  \caption{Data and simulation comparison of a trigger efficiency scan for the ANITA-III (left) and ANITA-IV (right) instruments. 
+  \caption{Comparison between data and simulation of a trigger efficiency scan for the ANITA-III (left) and ANITA-IV (right) instruments. 
     The trigger efficiency is plotted a function of the SNR
     measured at the oscilloscope for the data, and the SNR estimated in the trigger path for the simulation. 
     %\CD{Hmm, how come the left differs from what's in the A3 paper and the right differs from elog 691? Is it because there is no relative attenuation applied between the two sectors?}
@@ -143,14 +142,13 @@ the thermal noise, the trigger efficiency to a ground pulser, and the pointing r
 The digitized thermal noise is validated using distributions of
 the RMS of the simulated waveforms compared to a relatively quiet time
 during the flights.
-The ANITA-III quiet time is defined in Subsection~\ref{subsec:ANITA_thermalNoise}); for the ANITA-IV quiet time, we used forced triggers from run 200.
-Figure~\ref{fig:RMSwaveform} shows the RMS of waveforms produced
+The ANITA-III quiet time is defined in Subsection~\ref{subsec:ANITA_thermalNoise}; for the ANITA-IV quiet time, we used forced triggers from run 200.
+Figure~\ref{fig:RMSwaveform} shows the voltage RMS of noise-only waveforms produced
 in \icemc compared with the ones coming from a quiet time during
 the ANITA-III (left) and ANITA-IV (right) flights.
 
 As the ANITA-III data contained a significant amount of carrier wave
-contamination, two notch filters are applied to both the data and the
-simulation, improving the data and simulation agreement.
+contamination, a fair comparison of the data and simulation thermal noise is done after applying two notch filters to both datasets, improving the data and simulation agreement.
 The remaining differences are due to continuous wave noise in the data that
 could not be simply removed with two notch filters.
 
@@ -165,7 +163,7 @@ A direct comparison between the measured and simulated noise is seen in Figure~\
 
 \caption{Thermal noise validation. Comparison of RMS of waveforms for an \icemc simulation and a relatively quiet period of the ANITA-III (left) and ANITA-IV (right) flights.
     The ANITA-III flight was affected by strong CW noise that for a better comparison has been filtered out.
-    These distributions are area normalized to better compare their shape.
+    These distributions are normalized to equal area to better compare their shape.
   }
   \label{fig:RMSwaveform}
 \end{figure}
@@ -193,17 +191,17 @@ ANITA-III quiet time.
 %To aid the validation process, a calibration pulser
 %located at West Antarctic Ice Sheet field camp is being added to the simulation
 
-As an additional validation, we model the a calibration pulser located at the West Antarctic Ice Sheet (WAIS) field camp. The WAIS pulser consisted of a 6-kV FID brand pulser that generates a broadband impulse and drives a horizontally polarized antenna. The pulser was triggered on the GPS second with a known delay, permitting a measurement of the  ANITA trigger efficiency while the payload is in view of the pulser.
+As an additional validation, we model the calibration pulser that was located at the West Antarctic Ice Sheet (WAIS) field camp during the ANITA-III and ANITA-IV flights. The WAIS pulser consisted of a 6-kV FID brand pulser that generates a broadband impulse and drives a horizontally polarized antenna. The pulser was triggered on the GPS second with a known delay, permitting a measurement of the  ANITA trigger efficiency while the payload is in view of the pulser.
 
-The antenna used at WAIS, shown and modelled in Fig.~\ref{fig:waisPulser}, is a custom design based on a quad-slot model, for which the slots of the antenna are parallel to the ground. The antenna was installed $\sim$1~m below the surface of the snow. Similar to a discone, the bottom portion of the antenna acts as a reflector, and the angles of the taper on both the reflector and the upper cone tunes the orientation of the peak gain. This design is a scaled down version of the VHF antenna used as a low frequency extension to ANITA-III. The antenna was modelled with the NEC antenna modelling software.
+The antenna used at WAIS (modelled with the NEC antenna modelling software~\cite{nec}, see Figure~\ref{fig:waisPulser}) is a custom design based on a quad-slot model, for which the slots of the antenna are parallel to the ground. The antenna was installed $\sim$1~m below the surface of the snow. Similar to a discone, the bottom portion of the antenna acts as a reflector, and the angles of the taper on both the reflector and the upper cone tunes the orientation of the peak gain. This design is a scaled down version of the VHF antenna used as a low frequency extension to ANITA-III. 
 
-We model the electric field (Figure~\ref{fig:waisPulser}d) generated by the WAIS pulser by convolving the NEC model of the antenna with measurements of the voltage generated by the FID pulser on an oscilloscope.  Fig.~\ref{fig:waisPulser} shows the peak gain for each frequency, the associated phase at that frequency, and the reflection coefficient, $\Gamma$, from the antenna model. The electric field at 1~m from the pulser, $E$, results from relating the power density radiated by the antenna to the power density generated by the pulser with a characteristic impedance $Z_{c}$ and voltage $V$, accounting for loss from imperfect antenna matching between the antenna and the pulser, the magnitude and phase of the gain, $G$, propagation loss, and the impedance of free space, $Z_0$:
+We model the electric field (Figure~\ref{fig:waisPulser}d) generated by the WAIS pulser by convolving the NEC model of the antenna with measurements of the voltage generated by the FID pulser on an oscilloscope.  Figure~\ref{fig:waisPulser} shows the peak gain for each frequency, the associated phase at that frequency, and the reflection coefficient, $\Gamma(f)$, from the antenna model. The electric field at 1\,m from the pulser, $E(f)$, results from relating the power density radiated by the antenna to the power density generated by the pulser with a characteristic impedance $Z_{c}$ and voltage $V(f)$ at the pulser, accounting for loss from imperfect antenna matching between the antenna and the pulser, the magnitude and phase of the gain, $G(f)$, propagation loss, and the impedance of free space, $Z_0$:
 
 \begin{equation}
-|E| = \sqrt{\frac{|V|^2}{8 Z_c} (1 -|\Gamma|^2 ) \frac{Z_0}{2\pi (1~\textrm{m})^2} G}
+|E(f)| = \sqrt{\frac{|V(f)|^2}{8 Z_c} (1 -|\Gamma(f)|^2 ) \frac{Z_0}{2\pi (1~\textrm{m})^2} G}
 \end{equation}
 
-The electric field shown in Fig.~\ref{fig:waisPulser} is treated as a source in icemc at the location of the WAIS pulser. Figure~\ref{fig:waisEff} shows the efficiency of the ANITA-III payload to generate a trigger from pulses coming from WAIS divide. The simulation efficiency does not asymptote to 1, as it also includes inefficiencies due to the channel masking and the instrument dead time. 
+The simulation treats the electric field shown in Figure~\ref{fig:waisPulser} as originating from a source at the location of the WAIS pulser. Figure~\ref{fig:waisEff} shows the efficiency of the ANITA-III payload to generate a trigger from pulses coming from WAIS divide. The simulation efficiency does not asymptote to 1 at high SNR, as it also includes inefficiencies due to the channel masking and the instrument dead time. 
 %\CD{And maybe because of the metastability + too-short time windows in A3?} 
 
 \begin{figure}
@@ -226,11 +224,11 @@ To fully validate the simulation, a large sample of simulated
 neutrinos is produced following the cosmogenic neutrino flux arising from a mixed cosmic-ray composition as modelled by Kotera et al.~\cite{kotera}.
 Simulated waveforms from different triggering channels are
 cross-correlated to form a pointing map in the ANITA payload
-coordinates, azimuth ($\phi_{meas}$) and elevation
-($\theta_{meas}$). 
+coordinates, azimuth ($\phi_{\mathrm{meas}}$) and elevation
+($\theta_{\mathrm{meas}}$). 
 The peak of the correlation map is then compared to the expected
-azimuth ($\phi_{theory}$) and elevation
-($\theta_{theory}$), calculated from the true neutrino interaction point.
+azimuth ($\phi_{\mathrm{theory}}$) and elevation
+($\theta_{\mathrm{theory}}$), calculated from the true neutrino interaction point.
 Details of our reconstruction and analysis can be found in our
 previous publications~\cite{ANITA1paper,ANITA2paper,romero2015interferometric}.
 
