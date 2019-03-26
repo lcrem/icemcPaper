@@ -20,7 +20,7 @@ power spectra of the trigger and digitizer impulse responses for a
 sample channel of the ANITA-III payload.
 To avoid continuous wave (CW) noise from satellite and station transmissions, ANITA-IV adopted 
 tunable notch filters (see Section~\ref{subsec:tuffs} and Reference~\cite{Allison:2017vtk}).
-Figure~\ref{fig:ANITA_ImpulseResponses}(right) shows the
+Figure~\ref{fig:ANITA_ImpulseResponses}~(right) shows the
 power spectra of the trigger and digitizer impulse responses for a
 sample channel of the ANITA-IV payload with the most common filter configuration used during flight.
 Thermal noise is generated based on flight measurements (see Section~\ref{subsec:ANITA_thermalNoise}) and added to the waveforms.
@@ -45,9 +45,8 @@ Filter Front-end, or TUFF, boards~\cite{Allison:2017vtk}.
 This board uses up to three notches to attenuate
 the gain by a maximum of 13\,dB around each notch
 frequency:
-the notches are tunable, but default to 260, 375, and 460\,MHz  (corresponding to known satellite communications frequencies) using LRC circuits. 
-Whether each notch is activated and at which frequency (they
-can be moved to non-default positions) is called
+the notches are tunable, but default to 260, 375, and 460\,MHz, corresponding to known satellite communications frequencies, using LRC circuits. 
+Whether each notch is activated and at which frequency is called
 a "configuration".
 There were seven unique configurations for the ANITA-IV flight  which are simulated in 
 \icemc. 
@@ -69,7 +68,7 @@ The time-dependent response for each channel for a given configuration is loaded
 
 \subsection{Thermal noise}
 \label{subsec:ANITA_thermalNoise}
-Modelling thermal noise is crucial to the simulation of
+Modeling thermal noise is crucial to the simulation of
 neutrinos as it affects both the trigger and analysis efficiencies.
 An accurate model of the thermal noise makes it possible to simulate both the
 accidental noise triggers and the effect of noise fluctuations on the
@@ -264,7 +263,7 @@ The actual time-dependent masking status from the flight is used in the simulati
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/ANITA3_l1trigger.pdf}
   \includegraphics[width=.45\linewidth]{./Figs/ANITA3_globalTrigger.pdf}
-  \caption{Schematic of a second-level trigger (left) example, where a
+  \caption{Schematic of a second-level trigger example (left), where a
   plane-wave triggers an antenna in the bottom ring first, and a
   16\,ns window is opened to check L1 triggers in the middle and top
   ring.

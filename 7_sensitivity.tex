@@ -37,7 +37,7 @@ The interaction length is calculated following:
 and $\sigma(E)$ is the neutrino cross-section for $\nu$ charged-current interactions.
 Currently the neutrino cross-section is calculated using either the
 Reno {\it et al.}~\cite{reno2005high}
-or the Connolly {\it et al.} parametrizations~\cite{PhysRevD.83.113009}.
+or the Connolly {\it et al.}~\cite{PhysRevD.83.113009} parametrizations.
 The latter is the default.
 
 Although recent neutrino cross-section measurements by the IceCube
@@ -48,10 +48,9 @@ The current theoretical models can extrapolate the cross-sections up to $10^{21}
 but the associated uncertainties are
 large, and the impact on the ANITA acceptance is
 non-negligible.
-Figure~\ref{fig:acceptanceVSxsec}(right) shows the effect of changing the
+Figure~\ref{fig:acceptanceVSxsec}~(right) shows the effect of changing the
 cross-section parametrization on the ANITA-III acceptance.
-The nominal Connolly {\it et al} parametrization (used by default in
-\icemc) is compared to the upper and lower bound set by
+The nominal Connolly {\it et al.} parametrization is compared to the upper and lower bound set by
 Reference~\cite{PhysRevD.83.113009}, and to the alternate
 parametrization suggested by Reference~\cite{reno2005high}.
 
@@ -59,7 +58,7 @@ parametrization suggested by Reference~\cite{reno2005high}.
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/AcceptanceVScrossSectionParam_ANITA3.pdf}
   \includegraphics[width=.45\linewidth]{./Figs/CompareEffVol_A3vsA4.pdf}
-  \caption{ANITA-III acceptance for different cross-section parametrizations: Connolly et al.~\cite{PhysRevD.83.113009} and Reno et al~\cite{reno2005high} (left). ANITA-III and ANITA-IV volumetric acceptance comparison as a function of energy (right).}
+  \caption{(Left) ANITA-III acceptance for different cross-section parametrizations: Connolly et al.~\cite{PhysRevD.83.113009} and Reno et al.~\cite{reno2005high}. (Right) ANITA-III and ANITA-IV volumetric acceptance comparison as a function of energy.}
   \label{fig:acceptanceVSxsec}
 \end{figure}
 
@@ -67,8 +66,8 @@ parametrization suggested by Reference~\cite{reno2005high}.
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/CompareEffVol_A3masking.pdf}
   \includegraphics[width=.45\linewidth]{./Figs/CompareEffVol_A4tuff.pdf}
-  \caption{Comparison of ANITA-III volumetric acceptance with and without channel masking (left).
-  Comparison of ANITA-IV volumetric acceptance with and without TUFFs (right).}
+  \caption{(Left) Comparison of ANITA-III volumetric acceptance with and without channel masking.
+  (Right) Comparison of ANITA-IV volumetric acceptance with and without TUFFs.}
   \label{fig:acceptanceVariations}
 \end{figure}
 
@@ -79,6 +78,18 @@ Volumetric acceptances are also used to compare the impact of different hardware
 ANITA-III was highly affected by satellite noise and had to employ channel masking throughout the entire flight to avoid overloading the trigger. Figure~\ref{fig:acceptanceVariations}~(left) shows that channel masking reduced the ANITA-III sensitivity by more than 50\% across all energy bins.
 ANITA-IV used the TUFF boards to avoid carrier wave noise: Figure~\ref{fig:acceptanceVariations}~(right) shows the impact of the tunable filters on the ANITA-IV sensitivity which was reduced by 25--50\%.
 
+Figure~\ref{fig:moreAcceptanceVariations} shows the variation of the ANITA-IV volumetric acceptances coming from different \icemc parameter variations.
+The black solid line shows the effect of using BEDMAP instead of CRUST 2.0 as Antarctica ice model; the more finely binned BEDMAP map results in a roughly 20\% lower acceptance over all energies.
+The orange solid lines shows the effect of varying the random surface inclination, the two cases shows are 0 and 2.4\%, where the latter is double the nominal value.
+The violet area shows the effect of using constant trigger thresholds instead of time varying thresholds; the dashed violet area is the result of using the minimum and maximum thresholds for the whole flight.
+
+\begin{figure}[!h]\centering
+  \includegraphics[width=.45\linewidth]{./Figs/SystUncertaintiesForPaper.pdf}
+  \caption{Ratio of ANITA-IV volumetric acceptances as a function of energy found varying different \icemc parameters. The solid black line shows the variation coming from using BEDMAP instead of CRUST 2.0 as Antarctica ice model.
+  The orange solid lines are calculated by setting the surface slope inclination at 0 or 2.4\% (double the nominal).
+  The violet dotted area is found by using constant trigger thresholds instead of time varying thresholds. }
+  \label{fig:moreAcceptanceVariations}
+\end{figure}
 
 \subsection{Limit}
 \label{subsec:limit}

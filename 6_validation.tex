@@ -18,7 +18,7 @@ for signals with different signal-to-noise ratios (SNRs).
 The setup used before the ANITA-III flights is shown in Figure~\ref{fig:scan_setup}. 
 A Picosecond Pulse generator is used to produce an RF signal. 
 This is recorded with an oscilloscope and fed directly into the
-amplifiers  behind the ANITA antennas (after going through some attenuators and a 12-way splitter).
+amplifiers  behind the ANITA antennas, after going through attenuators and a 12-way splitter.
 Six of these channels are sent through the trigger and digitizer paths of
 two azimuthal sectors and
 are used to measure the global trigger efficiency. 
@@ -26,7 +26,7 @@ One is fed back into the oscilloscope to measure the SNR values.
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.8\linewidth]{./Figs/TriggerEfficiencyScanSetup.png}
-  \caption{Trigger efficiency scans setup in Antarctica before the ANITA-III flight.}
+  \caption{Trigger efficiency scans setup in Antarctica before the ANITA-III flight. The signals from the trigger are sent to the oscilloscope via the red line and recorded.}
   \label{fig:scan_setup}
 \end{figure}
 
@@ -51,8 +51,7 @@ data-like outputs.
 When simulating trigger efficiency scans, constant power
 thresholds corresponding to 450\,kHz scalers are used for all channels.
 
-The signals are recorded at the trigger (red line going to the
-oscilloscope in Figure~\ref{fig:scan_setup}) and the digitizer paths
+The signals are recorded at the trigger and the digitizer paths
 are used to validate the simulation.
 Figure~\ref{fig:scan_snr} shows a comparison of the measured SNR in
 data and simulation at the trigger (left) and at
@@ -73,12 +72,12 @@ fast oscilloscope.
   \label{fig:scan_snr}
 \end{figure}
 
-Figure~\ref{fig:scans}(left) shows a comparison between data and simulation of a trigger efficiency scan for the ANITA-III payload.
+Figure~\ref{fig:scans}~(left) shows a comparison between data and simulation of a trigger efficiency scan for the ANITA-III payload.
 The trigger efficiency is plotted as a function of the SNR
 measured in the trigger path.
 
-Before the ANITA-IV flight (Antarctica 2016), a similar set of measurements was collected at a 6\,MHz rate. 
-A data and simulation comparison of the trigger efficiency for the ANITA-IV instrument is shown in Figure~\ref{fig:scans}(right).
+Before the ANITA-IV flight, a similar set of measurements was collected at a 6\,MHz rate. 
+A data and simulation comparison of the trigger efficiency for the ANITA-IV instrument is shown in Figure~\ref{fig:scans}~(right).
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/EfficiencyScanNoDelaysA3_efficiencyVSsnrTrigger.pdf}
@@ -153,7 +152,7 @@ The remaining differences are due to continuous wave noise in the data that
 could not be simply removed with two notch filters.
 
 The ANITA-IV payload was less affected by carrier wave noise, as the TUFF boards were directly filtering out noisy frequencies, and the requirement of the coincidence between LCP and RCP signals to form a trigger ensured that only linearly polarized signals triggered the payload.
-A direct comparison between the measured and simulated noise is seen in Figure~\ref{fig:RMSwaveform}(right). 
+A direct comparison between the measured and simulated noise is seen in Figure~\ref{fig:RMSwaveform}~(right). 
 %The usage of low noise amplifiers reduced the ANITA-IV thermal noise to roughly 85\% of the ANITA-III one. 
 %\CD{What about the elephant trunk? I don't think the mV tells us much about the noise level (although it could be true that the noise is a bit lower in A4).
 
@@ -193,9 +192,9 @@ ANITA-III quiet time.
 
 As an additional validation, we model the calibration pulser that was located at the West Antarctic Ice Sheet (WAIS) field camp during the ANITA-III and ANITA-IV flights. The WAIS pulser consisted of a 6-kV FID brand pulser that generates a broadband impulse and drives a horizontally polarized antenna. The pulser was triggered on the GPS second with a known delay, permitting a measurement of the  ANITA trigger efficiency while the payload is in view of the pulser.
 
-The antenna used at WAIS (modelled with the NEC antenna modelling software~\cite{nec}, see Figure~\ref{fig:waisPulser}) is a custom design based on a quad-slot model, for which the slots of the antenna are parallel to the ground. The antenna was installed $\sim$1~m below the surface of the snow. Similar to a discone, the bottom portion of the antenna acts as a reflector, and the angles of the taper on both the reflector and the upper cone tunes the orientation of the peak gain. This design is a scaled down version of the VHF antenna used as a low frequency extension to ANITA-III. 
+The antenna used at WAIS is a custom design based on a quad-slot model, for which the slots of the antenna are parallel to the ground. The antenna was installed $\sim$1~m below the surface of the snow. Similar to a discone, the bottom portion of the antenna acts as a reflector, and the angles of the taper on both the reflector and the upper cone tunes the orientation of the peak gain. This design is a scaled down version of the VHF antenna used as a low frequency extension to ANITA-III. 
 
-We model the electric field (Figure~\ref{fig:waisPulser}d) generated by the WAIS pulser by convolving the NEC model of the antenna with measurements of the voltage generated by the FID pulser on an oscilloscope.  Figure~\ref{fig:waisPulser} shows the peak gain for each frequency, the associated phase at that frequency, and the reflection coefficient, $\Gamma(f)$, from the antenna model. The electric field at 1\,m from the pulser, $E(f)$, results from relating the power density radiated by the antenna to the power density generated by the pulser with a characteristic impedance $Z_{c}$ and voltage $V(f)$ at the pulser, accounting for loss from imperfect antenna matching between the antenna and the pulser, the magnitude and phase of the gain, $G(f)$, propagation loss, and the impedance of free space, $Z_0$:
+The WAIS antenna response was modelled using NEC antenna modeling software~\cite{nec}. Figure~\ref{fig:waisPulser} shows the peak gain for each frequency, the associated phase at that frequency, and the reflection coefficient, $\Gamma(f)$, from this antenna model. We then model the electric field (Figure~\ref{fig:waisPulser}d) generated by the WAIS pulser by convolving the NEC model of the antenna with measurements of the voltage generated by the FID pulser on an oscilloscope. The electric field at 1\,m from the pulser, $E(f)$, results from relating the power density radiated by the antenna to the power density generated by the pulser with a characteristic impedance $Z_{c}$ and voltage $V(f)$ at the pulser, accounting for loss from imperfect antenna matching between the antenna and the pulser, the magnitude and phase of the gain, $G(f)$, propagation loss, and the impedance of free space, $Z_0$:
 
 \begin{equation}
 |E(f)| = \sqrt{\frac{|V(f)|^2}{8 Z_c} (1 -|\Gamma(f)|^2 ) \frac{Z_0}{2\pi (1~\textrm{m})^2} G}
@@ -207,7 +206,7 @@ The simulation treats the electric field shown in Figure~\ref{fig:waisPulser} as
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{./Figs/waisPulser.pdf}
-\caption{ANITA-III horizontally polarized antenna used in the WAIS pulser}
+\caption{Characterization of the ANITA-III horizontally polarized antenna used in the WAIS pulser.}
 \label{fig:waisPulser}
 \end{figure}
 
@@ -221,7 +220,7 @@ The simulation treats the electric field shown in Figure~\ref{fig:waisPulser} as
 \subsubsection{Reconstruction validation}
 \label{subsec:ANITA_validation_reconstruction}
 To fully validate the simulation, a large sample of simulated
-neutrinos is produced following the cosmogenic neutrino flux arising from a mixed cosmic-ray composition as modelled by Kotera et al.~\cite{kotera}.
+neutrinos is produced following the cosmogenic neutrino flux arising from a mixed cosmic-ray composition as modeled by Kotera et al.~\cite{kotera}.
 Simulated waveforms from different triggering channels are
 cross-correlated to form a pointing map in the ANITA payload
 coordinates, azimuth ($\phi_{\mathrm{meas}}$) and elevation
