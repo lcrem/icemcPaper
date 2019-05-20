@@ -40,12 +40,10 @@ cuts of the cosmogenic neutrino analysis and quantify the experiment's sensitivi
 \end{figure}
 
 A flowchart of the \icemc simulation steps is shown in Figure~\ref{fig:intro_icemcFlow}.
-%The simulation models neutrino interactions in the ice from a specific energy or following a theoretical energy spectrum.
 At the beginning of each run the user can choose which ANITA flight to simulate and which neutrino energy spectrum to use.
 For each neutrino event, the position of the payload along the ANITA flight path, as well as the neutrino interaction position are randomly chosen.
-These are used to find the path to the ANITA detector (Section~\ref{sec:eventGeometry}). % and used to calculate the event weight.
-%The restrictions in neutrino phase space  that arise in the selection of the neutrino interaction positions and neutrino directions are corrected for in the final calculation (see Section~\ref{sec:weights}).
-The neutrino direction is then chosen within detectable angles; the neutrino energy is chosen following the input theoretical model; and the neutrino flavor and interaction type are chosen according to their expected ratios. 
+These are used to find the path to the ANITA detector (Section~\ref{sec:eventGeometry}). 
+The neutrino direction is then chosen within detectable angles; the neutrino energy is chosen following the input theoretical model; and the neutrino flavour and interaction type are chosen according to their expected ratios. 
 These parameters are used to produce the radio-frequency pulse following the Askaryan model described in Section~\ref{sec:rf}.
 The signal is then propagated through the ice and air to the ANITA
 detector (see Section~\ref{sec:propagation}). 
@@ -59,8 +57,6 @@ Section~\ref{sec:validation}).
 Finally the neutrino acceptance of the third and fourth ANITA flights, and
 the contributions of the different parts of the simulation to the uncertainties on the acceptance are presented in Section~\ref{sec:results} .
 
-
-%\section{Motivation}
 
 \section{The ANITA flights}
 \label{sec:anita3}
@@ -126,34 +122,6 @@ payload position and attitude.
 Power was supplied by an octagonal array of photovoltaic panels and stored using four pairs of 12-V lead-acid batteries.
 Communication to and from the payload was through the Iridium and TDRSS satellite systems throughout the flight, and by a direct line-of-sight radio link when within range of McMurdo Station.
 
-%\section{Overall Strategy}
-%\label{sec:strategy}
-%\todo[inline]{Add integral of what we want to calculate, with all the parts of what we need, and relate to sections Acceptance}
 
-%We require an interaction to occur within
-%the Antarctic ice volume within the balloon horizon.  
-%We generate two different types of events.  The first is where the
-%ray seen by the balloon is direct; the ray is emitted from the
-%interaction upward.  The second is where the ray is emitted downward
-%and is reflected from the ice-rock interface before reaching
-%the surface.  For half of the neutrinos, we force the ray to be the
-%first type and for the other half, the second type.
-%For a given type of ray, we find the unique path along which
-%an RF signal would travel from the interaction to the balloon, snelled
-%through ice layers at the ice-air surface.  
-
-%Next, we pick a direction for the neutrino
-%path, only considering directions such that the Cherenkov cone is
-%close enough to the unique ray from interaction to balloon that
-%the signal is still detectable under a best-case scenario.
-%Depth-dependent attenuation lengths and indexes of refraction
-%in the ice are based on recent South Pole measurements[CITE].  
-%Surface slopeyness is taken into account under a simple model.
-
-%The ANITA instrument response is based on measurement made in
-%Antarctica prior to the flights, and the system noise is simulated
-%according to measurements performed during the flight.
-%The trigger configuration is based on the most
-%current design.
 
 

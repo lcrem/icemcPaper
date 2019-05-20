@@ -3,22 +3,6 @@
 \usepackage{jinstpub}         
 %\usepackage{Styles/jinstpub} %%%% Comment previous line and comment uncomment this line if using pdflatex from terminal
 
-
-
-\newif\ifshowcomments
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% TO HIDE COMMENTS, FOLLOWING LINE SHOULD BE \showcommentsfalse, 
-%%% OTHERWISE \showcommentstrue
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\showcommentstrue
-\ifshowcomments
-\newcommand{\CD}[1]{\textcolor{purple}{CD: #1}}
-\newcommand{\BS}[1]{\textcolor{blue}{BS: #1}}
-\else
-\newcommand{\CD}[1]{}
-\newcommand{\BS}[1]{}
-\fi 
-
 \usepackage[colorinlistoftodos]{todonotes}
 
 
@@ -26,7 +10,7 @@
 \usepackage{amssymb}
 \usepackage{subfigure}
 \usepackage{lineno}
-%\linenumbers
+\linenumbers
 
 \usepackage{titlesec}
 \titleformat{\paragraph}[runin]
