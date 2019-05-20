@@ -14,17 +14,17 @@ middle crust, and lower crust.
 
 The total Antarctic ice volume is computed by summing the product of ice
 thickness and surface area for each bin within the Antarctic continent.
-The area of each bin is calculated following:
-\begin{equation}
-\int_{\phi_1}^{\phi_2}\int_{\theta_1}^{\theta_2}\sin{\theta}~d\theta~d\phi=\left(\phi_2-\phi_1\right)\times\left(\cos{\theta_1}-\cos{\theta_2}\right) \, ,
-\end{equation}
-\noindent where the limits of the integrals define the edges of the bin in
-latitude and longitude.
+%The area of each bin is calculated following:
+%\begin{equation}
+%\int_{\phi_1}^{\phi_2}\int_{\theta_1}^{\theta_2}\sin{\theta}~d\theta~d\phi=\left(\phi_2-\phi_1\right)\times\left(\cos{\theta_1}-\cos{\theta_2}\right) \, ,
+%\end{equation}
+%\noindent where the limits of the integrals define the edges of the bin in
+%latitude and longitude.
 It is also possible to run the simulation using BEDMAP ice thickness
 and subglacial topographic model of Antarctica, developed by the
 British Antarctic Survey~\cite{bedmap}.
-This model has a much more accurate representation of the ice in
-Antarctica, but it is much slower to run, so by default we use
+This model has higher resolution, 
+but it is much slower to run, so by default we use
 Crust 2.0.
 %When using BEDMAP the total volume of ice in Antarctica is found to be 
 %$2.47956e \times 10^{16}$\,m$^3$. 
@@ -44,7 +44,7 @@ The maximum angle that the ray may diverge from the axis of the Cherenkov cone f
 %determine which bin the interaction occurs in, and at what elevation within that bin.  
 %The exact position of the interaction in the longitudinal and
 %latitudinal directions is chosen at random within the bin.  
-Both direct and reflected detection is simulated.
+Both direct and reflected detection are simulated.
 In the first case the signal is propagated from the interaction position upwards to the payload. In the second case, the signal is propagated downwards
 towards to the ice-rock interface, approximated as a flat mirror,
 where the signal is then reflected upwards towards the payload. 
@@ -92,13 +92,13 @@ where the signal is then reflected upwards towards the payload.
 
 \subsection{Event weighting}
 \label{sec:weights}
-To minimize computation time,
+To reduce computation time,
 each event is weighted according to the probability of the neutrino reaching the interaction point without being absorbed in the earth, as well as
 the "phase space" reduction (defined below), such that only those topologies that give measurable signal are fully simulated. 
 As a neutrino moves through the earth, it encounters varying
 densities as it passes through layers of the earth's interior,
 and thus differing interaction lengths. 
-The neutrino survival probability is thus calculated from the along-track
+The neutrino survival probability is calculated from the along-track
 water-equivalent amount of material traversed.
 %The probability that a neutrino interacts in the rock is:
 %\begin{equation}
@@ -176,7 +176,8 @@ The direction weight is calculated as the ratio of the solid angle coming from t
   \includegraphics[width=.8\linewidth, trim = 0 6.5cm 0 0, clip]{./Figs/icemcWeightScheme.png}
   \caption{A schematic of the phase space weights used in \icemc. The
     position weight arises because only interaction positions within
-    the balloon horizon are simulated (yellow over blue area).
+    the balloon horizon are simulated (yellow over blue area, where
+    the blue area represents the entire Antarctica).
   The direction weight arises because only favourable directions around the
   Cherenkov cone are simulated (purple angle over a unit sphere).}
   \label{fig:weights}

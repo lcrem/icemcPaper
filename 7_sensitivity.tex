@@ -2,7 +2,7 @@
 \label{sec:results}
 
 The simulation files produced with \icemc are used by the ANITA analysts to tune analysis cuts, check the rate of accidental clustering, and also to simulate sources like Gamma Ray Bursts and Active Galactic Nuclei.
-Finally, the simulation is used to calculate the experimental sensitivity.
+Finally, the simulation is used to calculate the experiment sensitivity.
 
 \subsection{Acceptance}
 \label{subsec:acceptance}
@@ -15,7 +15,7 @@ The ANITA collaboration uses \icemc to calculate the experiment volumetric accep
  $n_{{pass}}(E)$ is the weighted (see Section~\ref{sec:weights}) number of events that pass the trigger at a given energy $E$,
  $V_0$ is the volume of ice in Antarctica viewed by ANITA,
 $\Omega$ is $4\pi$ steradians, and 
- $N(E)$ is number of neutrinos thrown by each simulation at that energy $E$.
+ $N(E)$ is the number of neutrino events thrown by each simulation at that energy $E$.
 
 The ANITA acceptance (\effarea) is calculated following:
 \begin{equation}
@@ -28,12 +28,12 @@ The ANITA acceptance (\effarea) is calculated following:
 The interaction length is calculated following:
  \begin{equation}
    \label{eq:intlength}
-    \ell_{{int}}(E_\nu) =   \dfrac{M_{NUCL}}{\sigma(E) \rho_{h_2o} } \;,
+    \ell_{{int}}(E_\nu) =   \dfrac{M_{NUCL}}{\sigma(E) \rho_{H_2O} } \;,
   \end{equation}
   
 \noindent where
  $M_{NUCL}$ is the atomic nuclear mass ($1.66\cdot 10^{-27}$\,kg),
- $\rho_{h_2o}$ is the density of water (1000\,kg/m$^3$), 
+ $\rho_{H_2O}$ is the density of water (1000\,kg/m$^3$), 
 and $\sigma(E)$ is the neutrino cross-section for $\nu$ charged-current interactions.
 Currently the neutrino cross-section is calculated using either the
 Reno {\it et al.}~\cite{reno2005high}
@@ -42,13 +42,15 @@ The latter is the default.
 
 Although recent neutrino cross-section measurements by the IceCube
 Collaboration reached the multi-TeV
-scale~\cite{aartsen2017measurement,bustamante2017measurement}, there
-are still no measurements at energies above 10\,TeV.
+scale~\cite{aartsen2017measurement,bustamante2017measurement}, 
+above this energy there are
+only cross section measurements with an uncertainty of a factor $\pm 5$ up to
+300\,TeV.
 The current theoretical models can extrapolate the cross-sections up to $10^{21}$\ev~\cite{PhysRevD.83.113009,reno2005high},
 but the associated uncertainties are
 large, and the impact on the ANITA acceptance is
 non-negligible.
-Figure~\ref{fig:acceptanceVSxsec}~(right) shows the effect of changing the
+Figure~\ref{fig:acceptanceVSxsec}~(left) shows the effect of changing the
 cross-section parametrization on the ANITA-III acceptance.
 The nominal Connolly {\it et al.} parametrization is compared to the upper and lower bound set by
 Reference~\cite{PhysRevD.83.113009}, and to the alternate
@@ -72,7 +74,11 @@ parametrization suggested by Reference~\cite{reno2005high}.
 \end{figure}
 
 Figure~\ref{fig:acceptanceVSxsec}(right) shows the ANITA-III and ANITA-IV volumetric acceptances and their ratio.
-The ANITA-IV hardware improvements (use of better low noise amplifiers, the tunable notch filters to avoid carrier wave noise, and the use of LCP-RCP trigger coincidences to avoid satellite noise) enabled ANITA-IV to improve by 50\% at high energy.
+The ANITA-IV hardware improvements (use of better low noise
+amplifiers, the tunable notch filters to avoid carrier wave noise, and
+the use of LCP-RCP trigger coincidences to avoid satellite noise) 
+enabled ANITA-IV to increase the volumetric acceptance by 50\% at the
+highest energy.
 
 Volumetric acceptances are also used to compare the impact of different hardware choices.
 ANITA-III was highly affected by satellite noise and had to employ channel masking throughout the entire flight to avoid overloading the trigger. Figure~\ref{fig:acceptanceVariations}~(left) shows that channel masking reduced the ANITA-III sensitivity by more than 50\% across all energy bins.
@@ -80,14 +86,14 @@ ANITA-IV used the TUFF boards to avoid carrier wave noise: Figure~\ref{fig:accep
 
 Figure~\ref{fig:moreAcceptanceVariations} shows the variation of the ANITA-IV volumetric acceptances coming from different \icemc parameter variations.
 The black solid line shows the effect of using BEDMAP instead of CRUST 2.0 as Antarctica ice model; the more finely binned BEDMAP map results in a roughly 20\% lower acceptance over all energies.
-The orange solid lines shows the effect of varying the random surface inclination, the two cases shows are 0 and 2.4\%, where the latter is double the nominal value.
-The violet area shows the effect of using constant trigger thresholds instead of time varying thresholds; the dashed violet area is the result of using the minimum and maximum thresholds for the whole flight.
+The orange solid lines shows the effect of varying the random surface inclination, the two cases shown are 0 and 2.4\%, where the latter is double the nominal value.
+The violet area shows the effect of using constant trigger thresholds instead of time varying thresholds; the violet area is the result of using the minimum and maximum thresholds for the whole flight.
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/SystUncertaintiesForPaper.pdf}
   \caption{Ratio of ANITA-IV volumetric acceptances as a function of energy found varying different \icemc parameters. The solid black line shows the variation coming from using BEDMAP instead of CRUST 2.0 as Antarctica ice model.
   The orange solid lines are calculated by setting the surface slope inclination at 0 or 2.4\% (double the nominal).
-  The violet dotted area is found by using constant trigger thresholds instead of time varying thresholds. }
+  The violet area is found by using constant trigger thresholds instead of time varying thresholds. }
   \label{fig:moreAcceptanceVariations}
 \end{figure}
 
@@ -166,7 +172,7 @@ four cosmogenic neutrino models~\cite{kkss2002,takami2009,ahlers2012,kotera2010c
 
 \section{Summary and Future improvements}
 \label{sec:future}
-The \icemc Monte Carlo simulation tool is used for the
+The \icemc Monte Carlo simulation program is used for the
 simulation of ultra high energy neutrino interactions in the Antarctic
 ice and their detection by the ANITA experiment.
 The data taken before or during the ANITA flights are used to validate the
@@ -174,5 +180,5 @@ simulation.
 The latest ANITA-III, ANITA-IV and ANITA\,I-IV performance is provided in the form of the
 acceptance and energy dependent neutrino limit.
  
-Future versions of the tool will include the possibility to use extensive air showers inputs from ZHAireS~\cite{alvarez2012monte}; improved and refined ice properties modeling and surface roughness effects; the contribution of the sun to the thermal noise; and carrier wave noise as measured during the ANITA-III and ANITA-IV flights.
-We are also working towards expanding the framework so that it can be used by all radio experiments based in Antarctica.
+Future versions of the program will include the possibility to use extensive air showers inputs from ZHAireS~\cite{alvarez2012monte}; improved and refined ice properties modeling and surface roughness effects; the contribution of the sun to the thermal noise; and carrier wave noise as measured during the ANITA-III and ANITA-IV flights.
+We are also working towards expanding the framework so that it can be used by multiple radio experiments based in Antarctica.

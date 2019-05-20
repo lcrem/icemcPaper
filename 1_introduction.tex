@@ -8,21 +8,29 @@ UHE neutrinos interact in the Antarctic ice and produce a coherent radio pulse o
 The ANITA experiment flies approximately 40\,km above Antarctica looking for radio signals in the band between 200 and 1200\,MHz, produced by UHE neutrinos and cosmic rays.
 Figure~\ref{fig:intro_ANITAconcept} shows a basic scheme of the
 Askaryan neutrino detection at the ANITA experiment, as well as the UHE cosmic ray detection principle.
-Four ANITA flights (Section~\ref{sec:anita3}) have been successfully completed so far, and this paper focuses on the simulations of the third and fourth ANITA flights.
+Four ANITA flights (Section~\ref{sec:anita3}) have been successfully
+completed as of 2019, and this paper focuses on the simulations of the third and fourth ANITA flights.
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.8\linewidth]{./Figs/ANITA_scheme_icemcpaper.png}
-  \caption{The ANITA detection concept with a photo of the ANITA-IV payload. UHE neutrinos interact with the Antarctic ice and produce a coherent radio pulse of Askaryan radiation. UHE cosmic ray interactions in the atmosphere produce a shower of secondary particles that interact with the geomagnetic field to produce a coherent radio impulse. These signals are detected by the ANITA instrument, given its position on a NASA long duration balloon. %\CD{Since the paper isn't really about CR's, is it worth discussing them?}
+  \caption{The ANITA detection concept with a photo of the ANITA-IV
+    payload. UHE neutrinos interact with the Antarctic ice and produce
+    a coherent radio pulse of Askaryan radiation. UHE cosmic ray
+    interactions in the atmosphere produce a shower of secondary
+    particles that interact with the geomagnetic field and can also
+    produce a coherent radio impulse. Both these signals are detected by the ANITA instrument. 
   }
   \label{fig:intro_ANITAconcept}
 \end{figure}
 
 
 
-The \icemc program is a C++ Monte Carlo simulation tool based on
-ROOT~\cite{brun1997root} used to simulate UHE neutrino interactions producing Askaryan radiation. 
-This tool is used by the ANITA collaboration to tune the neutrino
-analysis selection and quantify the experiment's sensitivity.
+The \icemc program is a C++ Monte Carlo simulation program based on
+ROOT~\cite{brun1997root} used to simulate the Askaryan radiation produced
+by neutrino interactions and the response of the ANITA detector to this
+radiation.
+This program is used by the ANITA collaboration to tune the selection
+cuts of the cosmogenic neutrino analysis and quantify the experiment's sensitivity.
 
 
 \begin{figure}[!h]\centering
@@ -37,15 +45,16 @@ At the beginning of each run the user can choose which ANITA flight to simulate 
 For each neutrino event, the position of the payload along the ANITA flight path, as well as the neutrino interaction position are randomly chosen.
 These are used to find the path to the ANITA detector (Section~\ref{sec:eventGeometry}). % and used to calculate the event weight.
 %The restrictions in neutrino phase space  that arise in the selection of the neutrino interaction positions and neutrino directions are corrected for in the final calculation (see Section~\ref{sec:weights}).
-The neutrino direction is then chosen within detectable angles; the neutrino energy is chosen following the input theoretical model; and the neutrino flavour and interaction type are chosen according to their expected ratios. 
+The neutrino direction is then chosen within detectable angles; the neutrino energy is chosen following the input theoretical model; and the neutrino flavor and interaction type are chosen according to their expected ratios. 
 These parameters are used to produce the radio-frequency pulse following the Askaryan model described in Section~\ref{sec:rf}.
 The signal is then propagated through the ice and air to the ANITA
 detector (see Section~\ref{sec:propagation}). 
 The response of the ANITA signal chain is simulated, and the resulting 
 data are saved in the same format as ANITA flight data 
 (see Section~\ref{sec:ANITA}).
-Different parts of the simulation are validated against data taken both in
-the lab and in-flight during the past ANITA flights (see
+Different parts of the simulation are validated against data taken
+both at the NASA Long Duration Balloon Facility
+before the launch and in-flight during the past ANITA flights (see
 Section~\ref{sec:validation}).
 Finally the neutrino acceptance of the third and fourth ANITA flights, and
 the contributions of the different parts of the simulation to the uncertainties on the acceptance are presented in Section~\ref{sec:results} .
@@ -111,7 +120,8 @@ When a trigger is issued, a switched capacitor array digitizes the signal with a
 The ANITA-IV signal chain included the Tunable Universal Filter Frontend boards (see Subsection~\ref{subsec:tuffs}), and $90^{\circ}$ hybrids to convert the signals into left- and right- circularly polarized (LCP and RCP) components. 
 The ANITA-IV trigger logic also required a coincidence between LCP and RCP signals within a 4\,ns coincidence window to select for linearly polarized signals. 
 
-As the payload rotates freely, two sets of GPS units were used to independently determine the
+As the payload rotates freely, two sets of GPS units were used
+independently to determine the
 payload position and attitude.
 Power was supplied by an octagonal array of photovoltaic panels and stored using four pairs of 12-V lead-acid batteries.
 Communication to and from the payload was through the Iridium and TDRSS satellite systems throughout the flight, and by a direct line-of-sight radio link when within range of McMurdo Station.

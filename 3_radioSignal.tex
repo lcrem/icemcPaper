@@ -5,7 +5,7 @@
 For each event the neutrino energy is picked randomly following the input energy spectrum.
 Rather than simulating the particle shower development in the ice that
 would produce the Askaryan radiation, a 1D parametrization is used 
-to get the peak of the Askaryan signal at 1\,m from the point of interaction, $\mathcal{E}^{(\mathrm{@ 1m})}$, 
+to find the peak of the Askaryan signal at 1\,m from the point of interaction, $\mathcal{E}^{(\mathrm{@ 1m})}$, 
 according to Reference~\cite{JaimeAskarian2000} and following:
 \begin{equation}
 \label{eq:vmmhz}
@@ -25,7 +25,7 @@ the flavors are fully mixed before the neutrinos get to the ice.
 Information about each flavor is stored separately so the sensitivity to each flavor may be quoted separately.
 
 The neutrino event undergoes a charged/neutral current interaction in
-$69\%$/32\% of cases.
+$68.7\%$/31.3\% of cases.
 %of the events at random are chosen to be charged current and the remainder to be neutral current.
 For charged current electron neutrino interactions, the electromagnetic
 component is calculated as $1-y$, where $y$ is the inelasticity and is
@@ -48,17 +48,17 @@ component in degrees is characterized by:
 \end{equation}
 where 
 $E_{EM}$ is the part of the shower energy associated with electromagnetic particles, and 
-$E_{LPM}$ is energy above which the Landau-Pomeranchuk-Migdal
+$E_{LPM}$ is the energy above which the Landau-Pomeranchuk-Migdal
 (LPM) effect becomes important.  
 The LPM effect causes
-the bremsstrahlung interaction to become suppressed because
-the momentum transfer ($\propto k/E^2$) becomes so small 
+the bremsstrahlung interaction to become suppressed when the longitudinal
+momentum transfer ($\propto k/E^2$) becomes so small 
 that the Heisenberg uncertainty
 causes the interaction to occur over many
 scattering centers, resulting in destructive interference.  
 This effect reduces the width of the Cherenkov cone, but not the magnitude of the electric field at the Cherenkov angle.
 Following the recommendation in Reference~\cite{JaimeAskarian2000}, 
-$E_{LPM}$ is set to $2\times10^{15}\ev$
+$E_{LPM}$ is set to $2\times10^{15}\ev$ in ice,
 and can be scaled to other media using the ratio of the respective radiation lengths.
 %~\cite{pdg}:
 %\begin{equation}
@@ -84,13 +84,13 @@ separate Monte Carlo simulation~\cite{jaime05},
 $X_0$ is the radiation length, and
 $n$ is the index of refraction.
 
-The signal strength at viewing angle $\theta$ 
+The signal strength at viewing angle $\theta_{\mathrm{view}}$ 
 away from the Cherenkov angle $\theta_{\mathrm{Ch}}$ is also parametrized following
 Equation\,13 in Reference\,~\cite{jaime05}:
 \begin{equation}
-\mathcal{E}(\theta)=\frac{\sin{\theta}}{\sin{\theta_{\mathrm{Ch}}}} \cdot
+\mathcal{E}(\theta_{\mathrm{view}})=\frac{\sin{\theta_{\mathrm{view}}}}{\sin{\theta_{\mathrm{Ch}}}} \cdot
 \mathcal{E}(\theta_{\mathrm{Ch}})\cdot \exp\left[-\left(
-    \frac{\theta-\theta_{\mathrm{Ch}}}{\Delta\theta_{\mathrm{em,had}}} \right)^2
+    \frac{\theta_{\mathrm{view}}-\theta_{\mathrm{Ch}}}{\Delta\theta_{\mathrm{em,had}}} \right)^2
 \right] \;.
 \end{equation}
 

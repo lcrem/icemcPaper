@@ -17,8 +17,9 @@ Trigger efficiency scans are used to measure the ANITA trigger efficiency
 for signals with different signal-to-noise ratios (SNRs).
 The setup used before the ANITA-III flights is shown in Figure~\ref{fig:scan_setup}. 
 A Picosecond Pulse generator is used to produce an RF signal. 
-This is recorded with an oscilloscope and fed directly into the
-amplifiers  behind the ANITA antennas, after going through attenuators and a 12-way splitter.
+One copy of the signal is recorded with an oscilloscope and the other
+is passed through attenuators, a 12-way splitter and finally
+fed into the amplifiers behind the ANITA antennas.
 Six of these channels are sent through the trigger and digitizer paths of
 two azimuthal sectors and
 are used to measure the global trigger efficiency. 
@@ -43,13 +44,13 @@ One is fed back into the oscilloscope to measure the SNR values.
 %A custom program, {\tt testInputAfterAntenna}, can be used to test the
 %ANITA instrument model response on any inputs injected behind the antennas.
 To simulate the trigger efficiency scan setup, the signals
-measured at the oscilloscope (see Figure~\ref{fig:scan_setup}) are
-injected into the same six channels used in the data scans, after
-appropriate attenuation is applied.
+measured at the oscilloscope (see Figure~\ref{fig:scan_setup}) 
+are inserted (with appropriate attenuation) into the same six channels as used
+in the hardware efficiency scans.
 These go through the trigger/digitizer path and produce ANITA
 data-like outputs.
-When simulating trigger efficiency scans, constant power
-thresholds corresponding to 450\,kHz scalers are used for all channels.
+%When simulating trigger efficiency scans, constant power
+%thresholds corresponding to 450\,kHz scalers are used for all channels.
 
 The signals are recorded at the trigger and the digitizer paths
 are used to validate the simulation.
@@ -57,6 +58,8 @@ Figure~\ref{fig:scan_snr} shows a comparison of the measured SNR in
 data and simulation at the trigger (left) and at
 the digitizer (right) as a function of the variable attenuation used
 during the scan.
+The SNR is calculated as the ratio of half of the peak-to-peak of the
+time domain signal to the RMS of the last part of the waveform.
 The measured SNR in the digitizer path generally has higher errors compared to the SNR in the trigger path, because the ANITA digitizer has on average a
 2.6\,GHz sampling rate, whereas the trigger path is measured with a
 fast oscilloscope. 
@@ -76,7 +79,7 @@ Figure~\ref{fig:scans}~(left) shows a comparison between data and simulation of 
 The trigger efficiency is plotted as a function of the SNR
 measured in the trigger path.
 
-Before the ANITA-IV flight, a similar set of measurements was collected at a 6\,MHz rate. 
+Before the ANITA-IV flight, a similar set of measurements was collected.
 A data and simulation comparison of the trigger efficiency for the ANITA-IV instrument is shown in Figure~\ref{fig:scans}~(right).
 
 \begin{figure}[!h]\centering
@@ -133,15 +136,14 @@ A data and simulation comparison of the trigger efficiency for the ANITA-IV inst
 
 \subsection{Comparisons with flight measurements}
 \label{subsec:validation_flight}
-Data taken during the ANITA-III and ANITA-IV flights is used to validate 
+Data taken during the ANITA-III and ANITA-IV flights are used to validate 
 the thermal noise, the trigger efficiency to a ground pulser, and the pointing reconstruction.
 
 \subsubsection{Thermal noise validation}
 \label{subsec:ANITA_validation_thermalNoise}
-The digitized thermal noise is validated using distributions of
+The simulation of thermal noise is validated using distributions of
 the RMS of the simulated waveforms compared to a relatively quiet time
 during the flights.
-The ANITA-III quiet time is defined in Subsection~\ref{subsec:ANITA_thermalNoise}; for the ANITA-IV quiet time, we used forced triggers from run 200.
 Figure~\ref{fig:RMSwaveform} shows the voltage RMS of noise-only waveforms produced
 in \icemc compared with the ones coming from a quiet time during
 the ANITA-III (left) and ANITA-IV (right) flights.
@@ -167,7 +169,7 @@ A direct comparison between the measured and simulated noise is seen in Figure~\
   \label{fig:RMSwaveform}
 \end{figure}
 
-As a second self-consistency check, the ANITA-III simulated thermal
+As a second consistency check, the ANITA-III simulated thermal
 noise is also used to produce Rayleigh fits (as described in
 Subsection~\ref{subsec:ANITA_thermalNoise}) and shows complete overlap with the fits to the
 ANITA-III quiet time.

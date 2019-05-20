@@ -1,7 +1,9 @@
 \section{ANITA detector model}
 \label{sec:ANITA}
-Taking into account the payload rotation, the simulated signal is
-propagated to the front of each of the ANITA antennas and through the trigger and digitizer paths of the ANITA instrument.
+The simulated signal is
+propagated to the front of each of the ANITA antennas and through the
+trigger and digitizer paths of the ANITA instrument, taking into
+account the payload rotation.
 The payload position chosen along the flight path is used to load appropriate information about the payload rotation, channel threshold values and channel masking.
 The payload geometry is simulated using photogrammetry measurements
 and phase-center calibration measurements taken with a ground pulser
@@ -12,9 +14,10 @@ applied to the signal according to the incident angles on the E and H planes.
 The signal then follows the signal chain as shown in
 Figure~\ref{fig:ANITA3_signalChain}.
 First, the incident fields are folded into the vertical-polarization (VPOL) and horizontal polarization (HPOL) responses of the antennas. 
-The responses of these components are divided into the trigger and digitizer paths.
-The digitizer and trigger responses were measured using calibration data taken before
-the flights. 
+The outputs of these components are divided into the trigger and digitizer paths.
+The digitizer and trigger responses were measured before the flights
+by injecting an RF signal directly into the amplifiers behind the
+ANITA antennas and measuring the output of the digitizer and trigger paths. 
 Figure~\ref{fig:ANITA_ImpulseResponses}~(left) shows the
 power spectra of the trigger and digitizer impulse responses for a
 sample channel of the ANITA-III payload.
@@ -24,7 +27,11 @@ Figure~\ref{fig:ANITA_ImpulseResponses}~(right) shows the
 power spectra of the trigger and digitizer impulse responses for a
 sample channel of the ANITA-IV payload with the most common filter configuration used during flight.
 Thermal noise is generated based on flight measurements (see Section~\ref{subsec:ANITA_thermalNoise}) and added to the waveforms.
-The modeled tunnel diode response (see Section~\ref{subsec:ANITA_trigger}) is convolved with the signal waveforms from all the channels, and if an event passes the trigger logic, the event is saved in the final output.
+Finally, the modeled tunnel diode response (see
+Section~\ref{subsec:ANITA_trigger}) is convolved with the signal
+waveforms from all the channels, and if an event passes the trigger
+logic, the RF signal and truth information about the neutrino
+interaction are saved in the final output.
 
 \begin{figure}[!h]\centering
   \includegraphics[width=.45\linewidth]{./Figs/A3ImpulseResponses.pdf}
@@ -45,15 +52,17 @@ Filter Front-end, or TUFF, boards~\cite{Allison:2017vtk}.
 This board uses up to three notches to attenuate
 the gain by a maximum of 13\,dB around each notch
 frequency:
-the notches are tunable, but default to 260, 375, and 460\,MHz, corresponding to known satellite communications frequencies, using LRC circuits. 
+the notches are tunable, but default to 260, 375, and 460\,MHz, corresponding to known satellite communications frequencies. 
 Whether each notch is activated and at which frequency is called
 a "configuration".
 There were seven unique configurations for the ANITA-IV flight  which are simulated in 
 \icemc. 
-The response of the trigger for the configuration when all notches are on and at default frequencies is plotted in Figure~\ref{fig:TUFFs}(left). 
-An example of the effect of the third notch switched on or off when 460\,MHz carrier wave noise is simulated is shown in Figure~\ref{fig:TUFFs}(right).
+The measured TUFF response for the configuration when all notches are on and at default frequencies is plotted in Figure~\ref{fig:TUFFs}~(left). 
+An example of the effect of the third notch switched on or off when 460\,MHz carrier wave noise is simulated is shown in Figure~\ref{fig:TUFFs}~(right).
 
-The time-dependent response for each channel for a given configuration is loaded into \icemc and convolved with the trigger and digitizer impulse responses. 
+The measured TUFF response for a given configuration is loaded
+into \icemc and convolved with the trigger and digitizer impulse
+responses for each channel. 
 
 \begin{figure}
   \centering
@@ -68,22 +77,20 @@ The time-dependent response for each channel for a given configuration is loaded
 
 \subsection{Thermal noise}
 \label{subsec:ANITA_thermalNoise}
-Modeling thermal noise is crucial to the simulation of
-neutrinos as it affects both the trigger and analysis efficiencies.
+Modeling thermal noise correctly is crucial to the simulation of ANITA’s
+sensitivity to neutrino interactions as it affects both the trigger and analysis efficiencies.
 An accurate model of the thermal noise makes it possible to simulate both the
 accidental noise triggers and the effect of noise fluctuations on the
 reconstructed correlation maps used to calculate the event direction in the ANITA analyses~\cite{romero2015interferometric}.
 
-To accurately model the thermal noise during the ANITA flights, events coming from minimum bias triggers during
-a quiet time of the ANITA-III flight (runs 204-250, approximately 2.5
-days) are used to produce power spectra for each digitizer channel
-using bins of width 10\,MHz.
+To provide a realistic model of the thermal noise during the ANITA flights, events coming from minimum bias triggers during
+a quiet time of the ANITA-III flight are used to produce power spectra in bins of 10\,MHz for each digitizer channel.
 As the ANITA-III flight suffered more than the previous flights 
 from continuous wave noise coming
 from satellites and human bases, frequencies in the ranges
 234-286\,MHz and 344-410\,MHz are filtered out in software analysis
 using two simple notch filters. 
-Antennas facing the sun were also excluded from the average.
+Data from antennas facing the sun were also excluded.
 
 For each channel and each frequency bin a Rayleigh PDF is fit to the data:
 \begin{equation} 
@@ -162,7 +169,8 @@ trigger-path signal through a time-domain tunnel diode model and comparing it to
 appropriate threshold from the flight for that channel at the event
 time.
 The tunnel diode response can be thought of as an integral of the power over about 10\,ns, but the true response is non-trivial.
-The tunnel diode response function is constructed based on the trigger diode output for each channel.
+The tunnel diode response function is constructed based on the
+measured diode output for each channel.
 The shape of the diode response is described by the sum of two negative Gaussians and a positive function that is the product of a quadratic and an exponential:
 \begin{equation}
       f(t) = A_1 \cdot e^{-(t-t_0^1)^2/2\sigma_1^2} + 
@@ -170,7 +178,7 @@ The shape of the diode response is described by the sum of two negative Gaussian
       A_3 \cdot \left( t-t_0^3 \right)^2 \cdot
       e^{-(t-t_0^3)/\sigma_3} \;,
     \end{equation}
-\noindent where the values for the parameters are shown in
+\noindent where the values for the parameters used for all channels are shown in
 Table~\ref{tab:diodeModelParameters};
 $f(t)$ is dimensionless.
 %Reference~\cite{diodeModel} describes how the model was found. 
@@ -197,7 +205,7 @@ Figure~\ref{fig:ANITA_diodeModel} shows the diode response model function.
   \label{fig:ANITA_diodeModel}
 \end{figure}
 
-For each waveform, the power as a function of time is calculated as:
+For each signal, the power as a function of time is calculated as:
 \begin{equation}
   P (t) = \dfrac{V(t) \cdot V(t)}{Z} \;,
 \end{equation}
@@ -208,7 +216,7 @@ response to find the diode output $D(t)$:
   D(t) = (f * P)(t) \;.
 \end{equation}
 For each time bin, the diode output is compared to the channel
-threshold, $V_T$, multiplied by RMS voltage of the diode outputs coming from pure thermal noise, $V_{RMS}$, following:
+threshold, $V_T$, multiplied by the RMS voltage of the diode outputs coming from pure thermal noise, $V_{RMS}$, following:
 \begin{equation} 
   D(t) < V_T \cdot V_{RMS} \;.
 \end{equation}
