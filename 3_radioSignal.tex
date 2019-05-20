@@ -13,7 +13,6 @@ according to Reference~\cite{JaimeAskarian2000} and following:
 \end{equation}
 \noindent where $\nu$ is the frequency, $\nu_0=1.15$\,GHz, $E$ is
 the shower energy (see Subsection~\ref{subsec:emhadshower}),
-%\CD{Is the hadronic shower treated differently from the em?}
 $\theta_{\mathrm{view}}$ is the viewing angle and $\theta_{\mathrm{Ch}}$ is the Cherenkov angle.
 This parametrization is valid up to 5\,GHz, covering the ANITA
 band of 0.2-1.2\,GHz.
@@ -26,15 +25,12 @@ Information about each flavor is stored separately so the sensitivity to each fl
 
 The neutrino event undergoes a charged/neutral current interaction in
 $69\%$/32\% of cases.
-%of the events at random are chosen to be charged current and the remainder to be neutral current.
 For charged current electron neutrino interactions, the electromagnetic
 component is calculated as $1-y$, where $y$ is the inelasticity and is
 approximated by a double-exponential function~\cite{gandhi}. 
 In all other cases the electromagnetic component is considered negligible.
 The hadronic component is equal to the inelasticity.
 Secondary particles are not propagated.
-
-%A future version of the code will include $\mu/\tau$ bremsstrahlung, photo-nuclear interactions, and $\tau$ neutrino regeneration.
 
 \subsection{Cherenkov Cone}
 \label{subsec:cherenkov_width}
@@ -60,13 +56,6 @@ This effect reduces the width of the Cherenkov cone, but not the magnitude of th
 Following the recommendation in Reference~\cite{JaimeAskarian2000}, 
 $E_{LPM}$ is set to $2\times10^{15}\ev$
 and can be scaled to other media using the ratio of the respective radiation lengths.
-%~\cite{pdg}:
-%\begin{equation}
-%E_{LPM}=2\times10^{15} \frac{X_0^{\mathrm{medium}}}{X_0^{\mathrm{ice}}}
-%\end{equation}
-%where ${X_0^\mathrm{ice}}=39.5$\,cm is the radiation length of ice and
-%$X_0^{\mathrm{medium}}$ is the radiation length of the medium of interest.
-
 
 The width of the Cherenkov cone for hadronic showers is modeled as laid out in Equation 9
 in~\cite{jaime05}:

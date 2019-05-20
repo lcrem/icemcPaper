@@ -31,7 +31,6 @@ The modeled tunnel diode response (see Section~\ref{subsec:ANITA_trigger}) is co
   \includegraphics[width=.45\linewidth]{./Figs/A4ImpulseResponses.pdf}
   \caption{Power spectrum of the trigger and digitizer impulse
     response for a sample channel, for the ANITA-III (left) and ANITA-IV (right) instruments. 
-    %\CD{Why is there power above Nyquist?}
     }
   \label{fig:ANITA_ImpulseResponses}
 \end{figure}
@@ -111,16 +110,7 @@ Graphs of the fitted amplitude, $\sigma(f_i)$, as a function of
 frequency were produced for each channel (interpolating in the frequency range where power is filtered), as seen in Figure~\ref{fig:rayleighFits}(right).
 In \icemc these graphs are used to generate random noise in the
 frequency domain for each channel: for each frequency bin $f_i$ the real and imaginary part are randomly extracted from a Gaussian distribution with zero mean and amplitude
-%\begin{equation} 
-%  \begin{split}
-%    \Re{f_i} & = RandomGaus(0, \sigma(f_i))/\sqrt{N_f} \\
-%    \Im{f_i} & = RandomGaus(0, \sigma(f_i))/\sqrt{N_f} \\
-%  \end{split}
-%  \label{eq:thermalNoise}
-%\end{equation}
-%\noindent where $f_i$ is a frequency bin,
 $\sigma(f_i)$, the fitted Rayleigh amplitude in that bin.
-%and $N_f$ is the total number of frequencies.
 
 This noise is added to the signal in the digitizer path.
 For the trigger path the noise is re-normalized using the bin-by-bin ratio of the
@@ -131,28 +121,6 @@ Thermal noise for the ANITA-IV simulation is derived from the ANITA-III measurem
 Samples containing only thermal noise are also produced, and they are used in
 the main ANITA analyses to test the robustness of our analysis selection.
 Subsection~\ref{subsec:validation_flight} details the thermal noise validation for both ANITA flights.
-
-%While producing Rayleigh fits to all channels, it turned out that two
-%channels (T04V and T04H) showed a different behavior than all the
-%others, as shown in Figure~\ref{fig:noiseWeird}.
-%T04V showed very irregular behavior during the whole flight (coming
-%off and on at different periods), while T04H is the channel with the
-%ALFA antenna attached to it, hence all frequencies above 700\,MHz were
-%filtered out.
-%For the moment these two graphs are used to simulate thermal noise in these two
-%channels for the ANITA-III flight. 
-%\begin{figure}[!h]\centering
-%  \includegraphics[width=.45\linewidth]{/Users/linda/ANITA/anita3/anitaBuildTool/RandomMacros/powerSpectra/plots/RayleighSigma_4V.png}\,
-%  \includegraphics[width=.45\linewidth]{/Users/linda/ANITA/anita3/anitaBuildTool/RandomMacros/powerSpectra/plots/RayleighSigma_4H.png}
-%  \caption{Graphs of the fitted amplitude ($\sigma(f_i)$) as a
-%    function of frequency for channels T04V and T04H (interpolating
-%    between filtered frequencies).}
-%  \label{fig:noiseWeird}
-%\end{figure}
-
-%\subsection{Anthropogenic noise} 
-%\label{subsec:ANITA_anthropogenicNoise}
-
 
 
 \subsection{Trigger simulation}
@@ -173,7 +141,6 @@ The shape of the diode response is described by the sum of two negative Gaussian
 \noindent where the values for the parameters are shown in
 Table~\ref{tab:diodeModelParameters};
 $f(t)$ is dimensionless.
-%Reference~\cite{diodeModel} describes how the model was found. 
 Figure~\ref{fig:ANITA_diodeModel} shows the diode response model function.
 
 \begin{table}[h!]
@@ -271,28 +238,6 @@ The diagram on the right shows the issuance of a global trigger when two
 adjacent azimuthal sectors had an L2 trigger.}
   \label{fig:ANITA_triggerLogic}
 \end{figure}
-
-
-
-
-%\subsubsection{Time dependent thresholds}
-%\label{subsubsec:ANITA_thresholds}
-%The ANITA-III flight softwares used an algorithm to vary the channel power thresholds during the flight and avoid overloading the DAQ in
-%regions where the anthropogenic noise was higher.
-%This algorithm tried to keep the scalers at roughly 500\,kHz.
-%The current version of \icemc does not include anthropogenic noise or thermal variation coming from the Sun, but we still need to simulate the power threshold changes to have a more accurate simulation of our flights.
-
-%In \icemc for every event, when picking the balloon position, the
-%scalers for each channel are set by looking at sample data taken from the ANITA-III flight.
-%The scalers are converted into relative power thresholds using
-%a log function in the range 1-25\,MHz, assuming an exponential diode
-%model with time constant $3.75 \times 10^{-9}$\,s.
-%This was calculated from a fit to single channel power thresholds taken with
-%an oscilloscope in 2008.
-
-%Section~\ref{sec:validation} shows the variation of the acceptance when using the time-dependent thresholds or using constant thresholds throughout the simulated flight.
-
-%Future versions of \icemc will include the simulation of anthropogenic noise, the contribution of the Sun, and a better treatment of the time varying thresholds.
 
 
 
